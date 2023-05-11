@@ -13,7 +13,7 @@ import EditIcon from '@mui/icons-material/Edit';
 
 // const initial_state_item: IObjPlantingGoods = {
 //     id_item_despacho_entrante:  null,
-//     id_siembra: lindo null,yarn start
+//     id_siembra: null,
 //     id_bien: null,
 //     cantidad_entrante: null,
 //     cantidad_distribuida: null,
