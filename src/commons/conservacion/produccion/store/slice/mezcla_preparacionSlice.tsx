@@ -4,7 +4,9 @@ import {
   type IObjVegetalMaterial,
   type IObjChange,
   type IProduccion,
-  type IObjMezcla
+  type IObjMezcla,
+  type IObjPreparacionMezcla
+  type IObjBienes
 } from '../../interfaces/mezcla_preparacion';
 import { type Persona } from "../../../../../interfaces/globalModels";
 
@@ -26,35 +28,39 @@ export const initial_state_change: IObjChange = {
   ruta_archivo_soporte: ""
 }
 export const initial_state_current_mezcla: IObjMezcla = {
-  id_vivero: null,
-  cantidad_usada: null,
-  nro_posicion: null,
-  nombre: "",
-  id_mezcla: null,
+   nombre: "",
   item_activo: true,
   item_ya_usado: false,
   id_unidad_medida: null,
-  fecha_preparacion: (new Date().toString()),
   observaciones: "",
   cantidad_creada: null,
-  id_bien_usado: null,
   succes: true,
   detail: "",
+
+}
+export const initial_state_current_preparacion: IObjPreparacionMezcla = {
   id_preparacion_mezcla: null,
   consec_vivero_mezclas : null,
+  id_mezcla: null,
   fecha_registro: (new Date().toString()),
   preparacion_anulada: false,
   justificacion_anulacion: "",
   fecha_anulacion: (new Date().toString()),
   id_persona_prepara: null,
+  fecha_preparacion: (new Date().toString()),
   id_persona_anula:  null,
+  nro_posicion: null,
+  cantidad_usada: null,
+  id_item_preparacion_mezcla: null
+}
+
+export const initial_state_current_bien: IObjBienes = {
   id_bien: null,
   unidad_medida: "",
   saldo_disponible: null,
   codigo_bien :  null,
-  id_item_preparacion_mezcla: null,
+  id_bien_usado: null
 }
-
 export const initial_statate_current_vegetal_material: IObjVegetalMaterial = {
   id_inventario_vivero: null,
   id_bien: null,
@@ -124,7 +130,11 @@ const initial_state: IProduccion = {
   persons: [],
   changing_person: initial_state_person,
   mezclas: [],
-  current_mezcla: initial_state_current_mezcla
+  current_mezcla: initial_state_current_mezcla,
+  bienes: [],
+  current_bien: initial_state_current_bien,
+  preparaciones: [],
+  current_preparacion: initial_state_current_preparacion
 }
 
 export const mezcla_preparacionSlice = createSlice({
@@ -163,6 +173,18 @@ export const mezcla_preparacionSlice = createSlice({
     set_current_mezcla: (state:IProduccion, action:PayloadAction <IObjMezcla> )=> {
       state.current_mezcla = action.payload;
     },
+    set_bienes: (state: IProduccion,action:PayloadAction <IObjBienes[]>)=> {
+      state.bienes = action.payload;
+    },
+    set_current_bien: (state: IProduccion,action:PayloadAction <IObjBienes>)=> {
+      state.current_bien = action.payload;
+    },
+    set_preparaciones: (state: IProduccion,action:PayloadAction <IObjPreparacionMezcla[]>)=> {
+      state.preparaciones = action.payload;
+    },  
+    set_current_preparacion: (state: IProduccion,action:PayloadAction <IObjPreparacionMezcla>)=> {
+      state.current_preparacion = action.payload;
+    },
   },
 });
-export const { set_changing_person, set_persons, set_current_nursery, set_nurseries, set_vegetal_materials, set_stage_changes, set_current_stage_change, set_current_vegetal_material, set_mezclas, set_current_mezcla } = mezcla_preparacionSlice.actions;
+export const { set_changing_person, set_persons, set_current_nursery, set_nurseries, set_vegetal_materials, set_stage_changes, set_current_stage_change, set_current_vegetal_material, set_mezclas, set_current_mezcla, set_bienes,set_current_bien,set_preparaciones,set_current_preparacion } = mezcla_preparacionSlice.actions;

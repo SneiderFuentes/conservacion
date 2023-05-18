@@ -11,6 +11,10 @@ export interface IProduccion {
   changing_person: Persona;
   mezclas: IObjMezcla [];
   current_mezcla:IObjMezcla;
+  bienes : IObjBienes [];
+  current_bien : IObjBienes;
+  preparaciones : IObjPreparacionMezcla [];
+  current_preparacion : IObjPreparacionMezcla;
 }
 
 export interface IObjChange {
@@ -75,32 +79,35 @@ export interface IObjNursery {
   id_persona_cuarentena: number | null;
 }
 export interface IObjMezcla {
-  id_vivero: number | null;
-  cantidad_usada: number | null;
-  nro_posicion: number | null;
   nombre: string | null;
-  id_mezcla: number | null;
   item_activo: boolean | null;
   item_ya_usado: boolean | null;
   id_unidad_medida: number | null;
-  fecha_preparacion: string| Date | null;
   observaciones: string | null;
   cantidad_creada: number| null;
-  id_bien_usado: number | null;
   succes: boolean | null;
   detail: string | null;
+   }
+export interface IObjPreparacionMezcla{
   id_preparacion_mezcla: number | null;
   consec_vivero_mezclas : number | null;
+  fecha_preparacion: string| Date | null;
   fecha_registro: string| Date | null;
   preparacion_anulada: boolean | null;
   justificacion_anulacion: string | null;
   fecha_anulacion: string | Date | null;
   id_persona_prepara: number|null;
   id_persona_anula: number| null;
+  id_mezcla: number | null;
+  id_item_preparacion_mezcla: number | null;
+  cantidad_usada: number | null;
+  nro_posicion: number | null;
+}
+
+export interface IObjBienes{
   id_bien: number|null;
   unidad_medida: string | null;
   saldo_disponible: number | null;
   codigo_bien : string | null;
-  id_item_preparacion_mezcla: number | null;
-  
+  id_bien_usado: number | null;
 }

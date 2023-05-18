@@ -28,17 +28,17 @@ import { Title } from "../../../../components/Title";
 import SeleccionarCambio from "../componentes/SeleccionarCambio";
 import SeleccionarMaterialVegetal from "../componentes/SeleccionarMaterialVegetal";
 import { useAppDispatch, useAppSelector } from '../../../../hooks';
-import { set_current_stage_change, set_current_nursery} from '../store/slice/produccionSlice';
+import { set_current_stage_change, set_current_nursery} from '../store/slice/mezcla_preparacionThunks';
 import { useEffect, useState } from "react";
 // import { add_siembra_service, edit_siembra_service,  get_germination_beds_id_service,  get_germination_beds_service, get_planting_goods_service } from "../store/thunks/produccionThunks";
-import { type IObjNursery, type IObjChange } from "../interfaces/produccion";
+import { type IObjNursery, type IObjChange, IObjMezcla } from "../interfaces/mezcla_preparacion";
 import { useForm } from "react-hook-form";
 import FormButton from "../../../../components/partials/form/FormButton";
 import SaveIcon from '@mui/icons-material/Save';
 import CloseIcon from '@mui/icons-material/Close';
 import CheckIcon from '@mui/icons-material/Check';
 import PersonaCambia from "../componentes/PersonaCambia";
-import { add_stage_change_service } from "../store/thunks/produccionThunks";
+import { add_stage_change_service } from "../store/thunks/mezcla_preparacionThunks";
 
 
 export function PreparacionMezclaScreen(): JSX.Element {
@@ -46,12 +46,12 @@ export function PreparacionMezclaScreen(): JSX.Element {
 
     return (
       <>
-      <h1>preparacion</h1>
+      <h1>Preparación de mezclas</h1>
       </>
     );
   }
    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-   const on_submit = (data: IObjChange) => {
+   const on_submit = (data: IObjMezcla) => {
     const form_data:any = new FormData();
    
     // if (current_stage_change.id_siembra !== null && current_stage_change.id_siembra !== undefined) {
@@ -71,9 +71,9 @@ export function PreparacionMezclaScreen(): JSX.Element {
       console.log(data)
       const fecha = new Date(data.fecha_cambio??"").toISOString()
 
-      form_data.append('id_bien_usado',Number (data.id_bien_usada));
+      form_data.append('id_bien_usado',Number (data.id_bien_usado));
       form_data.append('cantidad_usada', data.cantidad_usada);
-      form_data.append('nro_posicion', data.nro_posocion);
+      form_data.append('nro_posicion', data.nro_posicion);
       form_data.append('revisada_coord_viveros', data.revisada_coord_viveros);
       form_data.append('solicitud_abierta', data.solicitud_abierta);
       form_data.append('fecha_preparacion', fecha.slice(0,10) + " " + fecha.slice(11,19));
