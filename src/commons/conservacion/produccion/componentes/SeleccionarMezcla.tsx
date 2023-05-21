@@ -3,7 +3,7 @@ import BuscarModelo from "../../../../components/partials/getModels/BuscarModelo
 import { type GridColDef } from '@mui/x-data-grid';
 import { useAppSelector, useAppDispatch } from '../../../../hooks';
 import { set_current_vegetal_material,  set_vegetal_materials } from '../store/slice/mezcla_preparacionSlice';
-import { get_vegetal_materials_service } from '../store/thunks/produccionThunks';
+import { get_vegetal_materials_service } from '../store/thunks/mezcla_preparacionThunks';
 
 
 interface IProps {
