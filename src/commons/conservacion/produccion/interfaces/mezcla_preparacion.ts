@@ -83,10 +83,7 @@ export interface IObjMezcla {
   item_activo: boolean | null;
   item_ya_usado: boolean | null;
   id_unidad_medida: number | null;
-  observaciones: string | null;
-  cantidad_creada: number| null;
-  succes: boolean | null;
-  detail: string | null;
+  id_mezcla: number | null;
    }
 export interface IObjPreparacionMezcla{
   id_preparacion_mezcla: number | null;
@@ -102,6 +99,11 @@ export interface IObjPreparacionMezcla{
   id_item_preparacion_mezcla: number | null;
   cantidad_usada: number | null;
   nro_posicion: number | null;
+  id_vivero?: number | null;
+  cantidad_creada: number | null;
+  observaciones: string | null;
+  nombre_mezcla?: string | null;
+  nombre_persona_prepara?: string | null;
 }
 
 export interface IObjBienes{
@@ -110,4 +112,5 @@ export interface IObjBienes{
   saldo_disponible: number | null;
   codigo_bien : string | null;
   id_bien_usado: number | null;
+  nombre_bien: string | null;
 }

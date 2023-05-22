@@ -6,9 +6,7 @@ import {
   // type AxiosResponse
 } from 'axios';
 // Slices
-import {
-  set_nurseries, set_vegetal_materials, set_stage_changes, set_changing_person, set_persons, set_mezclas, set_current_mezcla
-} from '../slice/mezcla_preparacionSlice';
+
 import { api } from '../../../../../api/axios';
 
 
@@ -55,6 +53,22 @@ export const get_nurseries_service = (): any => {
   };
 };
 
+//Obtener mezcla a preparar
+export const get_meclas_service = (): any => {
+  return async (dispatch: Dispatch<any>) => {
+    try {
+      const { data } = await api.get('conservacion/mezclas/get-list-mezclas/');
+      console.log(data);
+      dispatch(set_mezclas(data.data));
+      return data;
+    } catch (error: any) {
+      console.log('get_mezcla_service');
+      control_error(error.response.data.detail);
+      return error as AxiosError;
+    }
+  };
+};
+
 // Obtener material vegetal filtro
 export const get_vegetal_materials_service = (
   id: number,
@@ -83,6 +97,28 @@ export const get_vegetal_materials_service = (
     }
   };
 };
+
+//obtener insumos
+export const get_goods_mezcla = (): any => {
+  return async (dispatch: Dispatch<any>) => {
+    try {
+      const { data } = await api.get(`conservacion/mezclas/get-list-mezclas/`);
+      console.log(data)
+      dispatch(set_stage_changes(data.data));
+      if (data.data.length > 0) {
+        control_success("Se encontraron cambios de etapa")
+      } else {
+        control_error("No se encontraron cambios de etapa")
+      }
+      return data;
+    } catch (error: any) {
+      console.log('set_stage_changes_service');
+      control_error(error.response.data.detail);
+      return error as AxiosError;
+    }
+  };
+};
+
 
 
 // obtener siembras

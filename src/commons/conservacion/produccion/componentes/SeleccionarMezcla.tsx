@@ -4,8 +4,8 @@ import { Avatar, Grid, IconButton, Tooltip } from '@mui/material';
 import BuscarModelo from "../../../../components/partials/getModels/BuscarModelo";
 import { type GridColDef } from '@mui/x-data-grid';
 import { type IObjMezcla, type IObjPreparacionMezcla, type IObjBienes } from "../interfaces/mezcla_preparacion";
-import { set_planting_goods, set_current_good } from '../store/slice/mezcla_preparacionSlice';
-import { control_error, get_goods_service } from '../store/thunks/mezcla_preparacionThunks';
+import { set_mezclas, set_current_mezcla, set_current_preparacion, set_preparaciones } from '../store/slice/produccionSlice';
+
 import { useAppDispatch, useAppSelector } from '../../../../hooks';
 import { useEffect, useState } from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -31,16 +31,15 @@ import EditIcon from '@mui/icons-material/Edit';
 const SeleccionarBienSiembra = () => {
 
 
-    const { control: control_bien, reset: reset_bien, getValues: get_values_bien} = useForm<IObjGoods>();
-    const { control: control_siembra, handleSubmit:handle_submit_siembra, reset: reset_siembra } = useForm<IObjPlantingGoods>();
-    const [aux_planting_goods, set_aux_planting_goods] = useState<IObjPlantingGoods[]>([]);
-    
+    const { control: control_preparacion, reset: reset_preparacion, getValues: get_values_preparacion} = useForm<IObjPreparacionMezcla>();
+    // const { control: control_siembra, handleSubmit:handle_submit_siembra, reset: reset_siembra } = useForm<IObjPlantingGoods>();
+   
     const [action, set_action] = useState<string>("agregar");
 
-    const { current_planting, goods, planting_goods, current_nursery, current_good } = useAppSelector((state) => state.material_vegetal);
+    const { preparaciones, nurseries, mezclas } = useAppSelector((state) => state.produccion);
     const dispatch = useAppDispatch();
 
-    const columns_bienes: GridColDef[] = [
+    const columns_praparacion: GridColDef[] = [
         { field: 'id_bien', headerName: 'ID', width: 20 },
         {
             field: 'codigo_bien',
@@ -105,212 +104,7 @@ const SeleccionarBienSiembra = () => {
 
     ];
 
-    const columns_bienes_siembra: GridColDef[] = [
-        { field: 'id_bien_consumido', headerName: 'ID', width: 20 },
-        {
-            field: 'codigo_bien',
-            headerName: 'Codigo',
-            width: 150,
-            renderCell: (params) => (
-                <div style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
-                    {params.value}
-                </div>
-            ),
-        },
-        {
-            field: 'nombre_bien',
-            headerName: 'Nombre',
-            width: 150,
-            renderCell: (params) => (
-                <div style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
-                    {params.value}
-                </div>
-            ),
-        },
-        {
-            field: 'tipo_bien',
-            headerName: 'Tipo',
-            width: 200,
-            renderCell: (params) => (
-                <div style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
-                    {params.value}
-                </div>
-            ),
-        },
-        {
-            field: 'cantidad',
-            headerName: 'Cantidad',
-            width: 140,
-            renderCell: (params) => (
-                <div style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
-                    {params.value}
-                </div>
-            ),
-        },
-        {
-            field: 'observaciones',
-            headerName: 'Observacion',
-            width: 150,
-            renderCell: (params) => (
-                <div style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
-                    {params.value}
-                </div>
-            ),
-        },
-        {
-            field: 'acciones',
-            headerName: 'Acciones',
-            width: 90,
-            renderCell: (params) => (
-                <>
-                    
-                        <Tooltip title="Editar">
-                            <IconButton
-                                onClick={() => {
-                                    edit_bien_siembra(params.row)
-
-                                }}
-                            >
-                                <Avatar
-                                    sx={{
-                                        width: 24,
-                                        height: 24,
-                                        background: '#fff',
-                                        border: '2px solid',
-                                    }}
-                                    variant="rounded"
-                                >
-                                    <EditIcon
-                                        sx={{ color: 'primary.main', width: '18px', height: '18px' }}
-                                    />
-
-                                </Avatar>
-                            </IconButton>
-                        </Tooltip>
-                    
-                        <Tooltip title="Borrar">
-                            <IconButton
-                                onClick={() => {
-                                    delete_bien_siembra(params.row)
-                                }}
-                            >
-                                <Avatar
-                                    sx={{
-                                        width: 24,
-                                        height: 24,
-                                        background: '#fff',
-                                        border: '2px solid',
-                                    }}
-                                    variant="rounded"
-                                >
-                                    <DeleteIcon
-                                        sx={{ color: 'primary.main', width: '18px', height: '18px' }}
-                                    />
-
-                                </Avatar>
-                            </IconButton>
-                        </Tooltip>
-                    
-                </>
-            ),
-        },
-    ];
-
-    const get_bienes: any = (async () => {
-        const id_vivero = current_nursery.id_vivero
-        console.log(current_nursery)
-        if (id_vivero !== null && id_vivero !== undefined) {
-            void dispatch(get_goods_service(id_vivero));
-        }
-    })
-
-    useEffect(() => {
-        const id_vivero = current_nursery.id_vivero
-        if (id_vivero !== null && id_vivero !== undefined) {
-            void dispatch(get_goods_service(id_vivero));
-        }
-        set_action("agregar")
-    }, [current_nursery]);
-
-    useEffect(() => {
-        set_aux_planting_goods(planting_goods)
-    }, [planting_goods]);
-
-    useEffect(() => {
-        dispatch(set_planting_goods(aux_planting_goods))
-    }, [aux_planting_goods]);
-
-    useEffect(() => {
-        reset_bien(current_good)
-        set_action("agregar")
-    }, [current_good]);
     
-    const on_submit_siembra = (data: IObjPlantingGoods): void => {   
-        if(current_good.id_bien !== null){
-            if(get_values_bien("codigo_bien") === current_good.codigo_bien){
-                const bien: IObjPlantingGoods | undefined = aux_planting_goods.find((p) => p.id_bien_consumido === current_good.id_bien )
-                const bien_semilla: IObjPlantingGoods | undefined = aux_planting_goods.find((p) => p.tipo_bien === "Semillas" )
-                const new_bien: IObjPlantingGoods = {
-                    id_consumo_siembra: null,
-                    id_siembra: current_planting.id_siembra,
-                    id_bien_consumido: current_good.id_bien,
-                    cantidad: Number(data.cantidad),
-                    observaciones: data.observaciones,
-                    id_mezcla_consumida: null,
-                    tipo_bien: current_good.tipo_bien,
-                    codigo_bien: current_good.codigo_bien,
-                    nombre_bien: current_good.nombre_bien,
-                }
-                if (bien === undefined) {
-                    if(bien_semilla === undefined){
-                        set_aux_planting_goods([...aux_planting_goods, new_bien])
-                    }else{
-                        control_error("Solo se puede agregar un bien de tipo semilla")
-                    }
-                } else {
-                    if (action === "editar") {
-                        const aux_items: IObjPlantingGoods[] = []
-                        aux_planting_goods.forEach((option) => {
-                            if (option.id_bien_consumido === current_good.id_bien) {
-                                aux_items.push(new_bien)
-                            } else {
-                                aux_items.push(option)
-                            }
-                        })
-                        set_aux_planting_goods(aux_items)
-                        set_action("agregar")
-                    } else {
-                        control_error("El bien ya fue agregado")
-                    }
-                }
-            } else{
-                control_error("Codigo de bien no coincide con el seleccionado")
-            }
-        } else{
-            control_error("Debe seleccionar el bien")
-        }
-
-    };
-
-    const edit_bien_siembra = (item: IObjPlantingGoods): void => {
-        const bien: IObjGoods | undefined =goods.find((p: IObjGoods) => p.id_bien === item.id_bien_consumido)
-        if(bien !== undefined){
-            dispatch(set_current_good(bien))
-        }
-        reset_siembra(aux_planting_goods.find((p) => p.id_bien_consumido === item.id_bien_consumido))
-        set_action("editar")
-
-    };
-
-    const delete_bien_siembra = (item: IObjPlantingGoods): void => {
-        const aux_items: IObjPlantingGoods[] = []
-        aux_planting_goods.forEach((option) => {
-            if (option.id_bien_consumido !== item.id_bien_consumido) {
-                aux_items.push(option)
-            }
-        })
-        set_aux_planting_goods(aux_items)
-    };
 
     return (
         <>
@@ -321,27 +115,53 @@ const SeleccionarBienSiembra = () => {
                 borderRadius={2}
             >
                 <BuscarModelo
-                    set_current_model={set_current_good}
-                    row_id={"id_inventario_vivero"}
-                    columns_model={columns_bienes}
-                    models={goods}
-                    get_filters_models={get_bienes}
-                    set_models={set_planting_goods}
-                    button_submit_label='Buscar bien'
+                    set_current_model={set_current_preparacion}
+                    row_id={"id_preparacion_mezcla"}
+                    columns_model={columns_preparacion}
+                    models={preparaciones}
+                    get_filters_models={null}
+                    set_models={set_preparaciones}
+                    button_submit_label='Buscar preparaciones'
                     form_inputs={[
                         {
-                            datum_type: "title",
-                            title_label: "Seleccione bien"
+                        datum_type: "select_controller",
+                        xs: 12,
+                        md: 3,
+                        control_form: control_preparacion,
+                        control_name: "id_vivero",
+                        default_value: "",
+                        rules: { required_rule: { rule: true, message: "Vivero requerido" } },
+                        label: "Vivero",
+                        disabled: false,
+                        helper_text: "Seleccione Vivero",
+                        select_options: nurseries,
+                        option_label: "nombre",
+                        option_key: "id_vivero",
                         },
+                        {
+                            datum_type: "select_controller",
+                            xs: 12,
+                            md: 3,
+                            control_form: control_preparacion,
+                            control_name: "id_mezcla",
+                            default_value: "",
+                            rules: { required_rule: { rule: true, message: "Mezcla requerida" } },
+                            label: "Mezcla",
+                            disabled: false,
+                            helper_text: "Seleccione Mezcla",
+                            select_options: mezclas,
+                            option_label: "nombre",
+                            option_key: "id_mezcla",
+                            },
                         {
                             datum_type: "input_controller",
                             xs: 12,
                             md: 3,
-                            control_form: control_bien,
-                            control_name: "codigo_bien",
+                            control_form: control_preparacion,
+                            control_name: "consec_vivero_mezclas",
                             default_value: "",
-                            rules: { required_rule: { rule: true, message: "Codigo bien requerido" } },
-                            label: "Codigo bien",
+                            rules: { required_rule: { rule: true, message: "Consecutivo mezcla requerido" } },
+                            label: "Consecutivo mezcla en vivero",
                             type: "number",
                             disabled: false,
                             helper_text: "",
@@ -350,11 +170,11 @@ const SeleccionarBienSiembra = () => {
                             datum_type: "input_controller",
                             xs: 12,
                             md: 3,
-                            control_form: control_bien,
-                            control_name: "nombre_bien",
+                            control_form: control_preparacion,
+                            control_name: "fecha_preparacion",
                             default_value: "",
-                            rules: { required_rule: { rule: true, message: "Debe seleccionar un bien" } },
-                            label: "Nombre",
+                            rules: { required_rule: { rule: true, message: "Debe seleccionar fecha" } },
+                            label: "Fecha de preparación",
                             type: "text",
                             disabled: true,
                             helper_text: ""
@@ -363,39 +183,24 @@ const SeleccionarBienSiembra = () => {
                             datum_type: "input_controller",
                             xs: 12,
                             md: 3,
-                            control_form: control_bien,
-                            control_name: "cantidad_disponible_bien",
+                            control_form: control_preparacion,
+                            control_name: "cantidad_creada",
                             default_value: "",
-                            rules: { required_rule: { rule: true, message: "Debe seleccionar un bien" } },
-                            label: "Cantidad disponible",
-                            type: "text",
-                            disabled: true,
-                            helper_text: ""
-                        },
-                    ]}
-                    form_inputs_list={[
-                        {
-                            datum_type: "input_controller",
-                            xs: 12,
-                            md: 2,
-                            control_form: control_siembra,
-                            control_name: "cantidad",
-                            default_value: "",
-                            rules: { required_rule: { rule: true, message: "Ingrese cantidad" } },
-                            label: "Cantidad",
+                            rules: { required_rule: { rule: true, message: "Debe seleccionar cantidad a crear" } },
+                            label: "Cantidad creada",
                             type: "number",
-                            disabled: false,
+                            disabled: true,
                             helper_text: ""
                         },
                         {
                             datum_type: "input_controller",
                             xs: 12,
-                            md: 2,
-                            control_form: control_bien,
-                            control_name: "unidad_disponible",
+                            md: 3,
+                            control_form: control_preparacion,
+                            control_name: "nombre_persona_prepara",
                             default_value: "",
-                            rules: { required_rule: { rule: true, message: "Debe seleccionar bien" } },
-                            label: "Unidad",
+                            rules: { required_rule: { rule: true, message: "Debe seleccionar la personas que la creó" } },
+                            label: "Preparación realizada por",
                             type: "text",
                             disabled: true,
                             helper_text: ""
@@ -403,57 +208,66 @@ const SeleccionarBienSiembra = () => {
                         {
                             datum_type: "input_controller",
                             xs: 12,
-                            md: 5,
-                            control_form: control_siembra,
+                            md: 12,
+                            control_form: control_preparacion,
                             control_name: "observaciones",
                             default_value: "",
-                            rules: { required_rule: { rule: true, message: "Observación requerido" } },
-                            label: "Observación",
+                            rules: { required_rule: { rule: true, message: "Observación requerida" } },
+                            label: "Observacion",
                             type: "text",
                             multiline_text: true,
                             rows_text: 4,
                             disabled: false,
                             helper_text: ""
-                        },
-
+                          },
                     ]}
-                    title_list='Bienes consumidos'
-                    list={aux_planting_goods}
-                    add_item_list={handle_submit_siembra(on_submit_siembra)}
-                    add_list_button_label={action}
-                    columns_list={columns_bienes_siembra}
-                    row_list_id={"id_consumo_siembra"}
-                    modal_select_model_title='Buscar bien'
+                    modal_select_model_title='Buscar siembra'
                     modal_form_filters={[
+                      {
+                        datum_type: "select_controller",
+                        xs: 12,
+                        md: 3,
+                        control_form: control_preparacion,
+                        control_name: "id_vivero",
+                        default_value: "",
+                        rules: {},
+                        label: "Vivero",
+                        disabled: false,
+                        helper_text: "Seleccione Vivero",
+                        select_options: nurseries,
+                        option_label: "Id Vivero",
+                        option_key: "id_vivero",
+                        },
                         {
-                            datum_type: "input_controller",
+                            datum_type: "select_controller",
                             xs: 12,
                             md: 3,
-                            control_form: control_bien,
-                            control_name: "codigo_bien",
+                            control_form: control_preparacion,
+                            control_name: "id_mezcla",
                             default_value: "",
                             rules: {},
-                            label: "Codigo bien",
-                            type: "number",
+                            label: "Mezcla",
                             disabled: false,
-                            helper_text: "",
+                            helper_text: "Seleccione Mezcla",
+                            select_options: mezclas,
+                            option_label: "Id mezcla",
+                            option_key: "id_mezcla",
                         },
                         {
                             datum_type: "input_controller",
                             xs: 12,
                             md: 3,
-                            control_form: control_bien,
-                            control_name: "nombre_bien",
+                            control_form: control_preparacion,
+                            control_name: "nombre_mezcla",
                             default_value: "",
                             rules: {},
-                            label: "Nombre",
+                            label: "Nombre de la mezcla",
                             type: "text",
-                            disabled: false,
+                            disabled: true,
                             helper_text: ""
                         },
-                    ]}
+                     ]}   
                 />
-                
             </Grid>
         </>
     );
