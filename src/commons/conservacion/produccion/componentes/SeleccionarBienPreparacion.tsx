@@ -37,17 +37,13 @@ return (
         >
             <BuscarModelo
                 set_current_model={set_current_bien}
-                row_id={"id_inventario_vivero"}
+                row_id={"id_bien"}
                 columns_model={columns_bienes}
-                models={goods}
-                get_filters_models={get_bienes}
-                set_models={set_planting_goods}
-                button_submit_label='Buscar bien'
+                models={bienes}
+                get_filters_models={null}
+                set_models={set_bienes}
+                button_submit_label='Búsqueda de insumos'
                 form_inputs={[
-                    {
-                        datum_type: "title",
-                        title_label: "Búsqueda de insumos"
-                    },
                     {
                         datum_type: "input_controller",
                         xs: 12,
@@ -57,7 +53,7 @@ return (
                         default_value: "",
                         rules: { required_rule: { rule: true, message: "Codigo bien requerido" } },
                         label: "Codigo bien",
-                        type: "number",
+                        type: "text",
                         disabled: false,
                         helper_text: "",
                     },
@@ -65,7 +61,7 @@ return (
                         datum_type: "input_controller",
                         xs: 12,
                         md: 3,
-                        control_form: control_preparacion,
+                        control_form: control_bien,
                         control_name: "nombre_bien",
                         default_value: "",
                         rules: { required_rule: { rule: true, message: "Debe seleccionar un bien" } },
@@ -78,26 +74,54 @@ return (
                         datum_type: "input_controller",
                         xs: 12,
                         md: 3,
-                        control_form: control_preparacion,
-                        control_name: "cantidad_disponible_bien",
+                        control_form: control_bien,
+                        control_name: "cantidad_usada",
                         default_value: "",
                         rules: { required_rule: { rule: true, message: "Debe seleccionar un bien" } },
-                        label: "Cantidad disponible",
+                        label: "Cantidad Usada",
                         type: "text",
                         disabled: true,
                         helper_text: ""
                     },
+                    {
+                        datum_type: "input_controller",
+                        xs: 12,
+                        md: 3,
+                        control_form: control_bien,
+                        control_name: "saldo_disponible",
+                        default_value: "",
+                        rules: { required_rule: { rule: true, message: "Debe seleccionar un bien" } },
+                        label: "Disponible",
+                        type: "text",
+                        disabled: true,
+                        helper_text: ""
+                    },
+                    {
+                        datum_type: "input_controller",
+                        xs: 12,
+                        md: 12,
+                        control_form: control_bien,
+                        control_name: "observaciones",
+                        default_value: "",
+                        rules: { required_rule: { rule: true, message: "Observación requerida" } },
+                        label: "Observacion",
+                        type: "text",
+                        multiline_text: true,
+                        rows_text: 4,
+                        disabled: false,
+                        helper_text: ""
+                      },
                 ]}
                 form_inputs_list={[
                     {
                         datum_type: "input_controller",
                         xs: 12,
                         md: 2,
-                        control_form: control_siembra,
-                        control_name: "cantidad",
+                        control_form: control_preparacion,
+                        control_name: "cantidad_usada",
                         default_value: "",
                         rules: { required_rule: { rule: true, message: "Ingrese cantidad" } },
-                        label: "Cantidad",
+                        label: "Cantidad usada",
                         type: "number",
                         disabled: false,
                         helper_text: ""
