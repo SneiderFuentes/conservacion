@@ -28,7 +28,7 @@ import EditIcon from '@mui/icons-material/Edit';
 // }
 
 // eslint-disable-next-line @typescript-eslint/naming-convention, @typescript-eslint/explicit-function-return-type
-const SeleccionarBienSiembra = () => {
+const SeleccionarMezcla = () => {
 
 
     const { control: control_preparacion, reset: reset_preparacion, getValues: get_values_preparacion} = useForm<IObjPreparacionMezcla>();
@@ -39,7 +39,7 @@ const SeleccionarBienSiembra = () => {
     const { preparaciones, nurseries, mezclas } = useAppSelector((state) => state.produccion);
     const dispatch = useAppDispatch();
 
-    const columns_praparacion: GridColDef[] = [
+    const columns_preparacion: GridColDef[] = [
         { field: 'id_bien', headerName: 'ID', width: 20 },
         {
             field: 'codigo_bien',
@@ -274,4 +274,4 @@ const SeleccionarBienSiembra = () => {
 }
 
 // eslint-disable-next-line no-restricted-syntax
-export default SeleccionarBienSiembra;
+export default SeleccionarMezcla;

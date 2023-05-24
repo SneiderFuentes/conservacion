@@ -4,7 +4,7 @@ import { Avatar, Grid, IconButton, Tooltip } from '@mui/material';
 import BuscarModelo from "../../../../components/partials/getModels/BuscarModelo";
 import { type GridColDef } from '@mui/x-data-grid';
 import { type IObjMezcla, type IObjPreparacionMezcla, type IObjBienes } from "../interfaces/mezcla_preparacion";
-import { set_mezclas, set_current_mezcla, set_current_preparacion, set_preparaciones, set_current_bien } from '../store/slice/produccionSlice';
+import { set_mezclas, set_current_mezcla, set_current_preparacion, set_preparaciones, set_current_bien, set_bienes } from '../store/slice/produccionSlice';
 import { useAppDispatch, useAppSelector } from '../../../../hooks';
 import { useEffect, useState } from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -27,6 +27,256 @@ import EditIcon from '@mui/icons-material/Edit';
 // }
 
 // eslint-disable-next-line @typescript-eslint/naming-convention, @typescript-eslint/explicit-function-return-type
+const SeleccionarBienPreparacion = () => {
+
+
+    const { control: control_bien, reset: reset_bien, getValues: get_values_bien} = useForm<IObjBienes>();
+    const { control: control_preparacion, handleSubmit:handle_submit_preparacion, reset: reset_preparacion } = useForm<IObjPreparacionMezcla>();
+   
+    const [action, set_action] = useState<string>("agregar");
+    const [aux_insumos, set_aux_insumos] = useState<IObjBienes[]>([]);
+    const { preparaciones, nurseries, mezclas, bienes } = useAppSelector((state) => state.produccion);
+    const dispatch = useAppDispatch();
+
+    const columns_bienes: GridColDef[] = [
+        { field: 'id_bien', headerName: 'ID', width: 20 },
+        {
+            field: 'codigo_bien',
+            headerName: 'Codigo',
+            width: 200,
+            renderCell: (params) => (
+                <div style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
+                    {params.value}
+                </div>
+            ),
+        },
+        {
+            field: 'nombre_bien',
+            headerName: 'Nombre',
+            width: 200,
+            renderCell: (params) => (
+                <div style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
+                    {params.value}
+                </div>
+            ),
+        },
+        {
+            field: 'tipo_bien',
+            headerName: 'Tipo',
+            width: 200,
+            renderCell: (params) => (
+                <div style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
+                    {params.value}
+                </div>
+            ),
+        },
+        {
+            field: 'cantidad_entrante',
+            headerName: 'Cantidad entrante',
+            width: 150,
+            renderCell: (params) => (
+                <div style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
+                    {params.value}
+                </div>
+            ),
+        },
+        {
+            field: 'cantidad_disponible_bien',
+            headerName: 'Cantidad disponible',
+            width: 150,
+            renderCell: (params) => (
+                <div style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
+                    {params.value}
+                </div>
+            ),
+        },
+        {
+            field: 'unidad_disponible',
+            headerName: 'unidad',
+            width: 150,
+            renderCell: (params) => (
+                <div style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
+                    {params.value}
+                </div>
+            ),
+        },
+
+    ];
+    const columns_bienes: GridColDef[] = [
+        { field: 'id_bien', headerName: 'ID', width: 20 },
+        {
+            field: 'codigo_bien',
+            headerName: 'Codigo',
+            width: 200,
+            renderCell: (params) => (
+                <div style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
+                    {params.value}
+                </div>
+            ),
+        },
+        {
+            field: 'nombre_bien',
+            headerName: 'Nombre',
+            width: 200,
+            renderCell: (params) => (
+                <div style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
+                    {params.value}
+                </div>
+            ),
+        },
+        {
+            field: 'tipo_bien',
+            headerName: 'Tipo',
+            width: 200,
+            renderCell: (params) => (
+                <div style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
+                    {params.value}
+                </div>
+            ),
+        },
+        {
+            field: 'cantidad_entrante',
+            headerName: 'Cantidad entrante',
+            width: 150,
+            renderCell: (params) => (
+                <div style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
+                    {params.value}
+                </div>
+            ),
+        },
+        {
+            field: 'cantidad_disponible_bien',
+            headerName: 'Cantidad disponible',
+            width: 150,
+            renderCell: (params) => (
+                <div style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
+                    {params.value}
+                </div>
+            ),
+        },
+        {
+            field: 'unidad_disponible',
+            headerName: 'unidad',
+            width: 150,
+            renderCell: (params) => (
+                <div style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
+                    {params.value}
+                </div>
+            ),
+        },
+
+    ];
+
+    const columns_bienes_siembra: GridColDef[] = [
+        { field: 'id_bien_consumido', headerName: 'ID', width: 20 },
+        {
+            field: 'codigo_bien',
+            headerName: 'Codigo',
+            width: 150,
+            renderCell: (params) => (
+                <div style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
+                    {params.value}
+                </div>
+            ),
+        },
+        {
+            field: 'nombre_bien',
+            headerName: 'Nombre',
+            width: 150,
+            renderCell: (params) => (
+                <div style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
+                    {params.value}
+                </div>
+            ),
+        },
+        {
+            field: 'tipo_bien',
+            headerName: 'Tipo',
+            width: 200,
+            renderCell: (params) => (
+                <div style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
+                    {params.value}
+                </div>
+            ),
+        },
+        {
+            field: 'cantidad',
+            headerName: 'Cantidad',
+            width: 140,
+            renderCell: (params) => (
+                <div style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
+                    {params.value}
+                </div>
+            ),
+        },
+        {
+            field: 'observaciones',
+            headerName: 'Observacion',
+            width: 150,
+            renderCell: (params) => (
+                <div style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
+                    {params.value}
+                </div>
+            ),
+        },
+        {
+            field: 'acciones',
+            headerName: 'Acciones',
+            width: 90,
+            renderCell: (params) => (
+                <>
+                    
+                        <Tooltip title="Editar">
+                            <IconButton
+                                onClick={() => {
+                                    edit_bien_siembra(params.row)
+
+                                }}
+                            >
+                                <Avatar
+                                    sx={{
+                                        width: 24,
+                                        height: 24,
+                                        background: '#fff',
+                                        border: '2px solid',
+                                    }}
+                                    variant="rounded"
+                                >
+                                    <EditIcon
+                                        sx={{ color: 'primary.main', width: '18px', height: '18px' }}
+                                    />
+
+                                </Avatar>
+                            </IconButton>
+                        </Tooltip>
+                    
+                        <Tooltip title="Borrar">
+                            <IconButton
+                                onClick={() => {
+                                    delete_bien_siembra(params.row)
+                                }}
+                            >
+                                <Avatar
+                                    sx={{
+                                        width: 24,
+                                        height: 24,
+                                        background: '#fff',
+                                        border: '2px solid',
+                                    }}
+                                    variant="rounded"
+                                >
+                                    <DeleteIcon
+                                        sx={{ color: 'primary.main', width: '18px', height: '18px' }}
+                                    />
+
+                                </Avatar>
+                            </IconButton>
+                        </Tooltip>
+                    
+                </>
+            ),
+        },
+    ];
 return (
     <>
         <Grid
@@ -70,6 +320,9 @@ return (
                         disabled: true,
                         helper_text: ""
                     },
+                   
+                ]}
+                form_inputs_list={[
                     {
                         datum_type: "input_controller",
                         xs: 12,
@@ -111,56 +364,13 @@ return (
                         disabled: false,
                         helper_text: ""
                       },
-                ]}
-                form_inputs_list={[
-                    {
-                        datum_type: "input_controller",
-                        xs: 12,
-                        md: 2,
-                        control_form: control_preparacion,
-                        control_name: "cantidad_usada",
-                        default_value: "",
-                        rules: { required_rule: { rule: true, message: "Ingrese cantidad" } },
-                        label: "Cantidad usada",
-                        type: "number",
-                        disabled: false,
-                        helper_text: ""
-                    },
-                    {
-                        datum_type: "input_controller",
-                        xs: 12,
-                        md: 2,
-                        control_form: control_bien,
-                        control_name: "unidad_disponible",
-                        default_value: "",
-                        rules: { required_rule: { rule: true, message: "Debe seleccionar bien" } },
-                        label: "Unidad",
-                        type: "text",
-                        disabled: true,
-                        helper_text: ""
-                    },
-                    {
-                        datum_type: "input_controller",
-                        xs: 12,
-                        md: 5,
-                        control_form: control_siembra,
-                        control_name: "observaciones",
-                        default_value: "",
-                        rules: { required_rule: { rule: true, message: "Observación requerido" } },
-                        label: "Observación",
-                        type: "text",
-                        multiline_text: true,
-                        rows_text: 4,
-                        disabled: false,
-                        helper_text: ""
-                    },
 
                 ]}
-                title_list='Bienes consumidos'
-                list={aux_planting_goods}
-                add_item_list={handle_submit_siembra(on_submit_siembra)}
+                title_list='Insumos consumidos'
+                list={aux_insumos}
+                add_item_list={null}
                 add_list_button_label={action}
-                columns_list={columns_bienes_siembra}
+                columns_list={columns_bienes}
                 row_list_id={"id_consumo_siembra"}
                 modal_select_model_title='Buscar bien'
                 modal_form_filters={[

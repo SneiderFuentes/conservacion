@@ -32,6 +32,7 @@ import FormButton from "../../../../components/partials/form/FormButton";
 import SaveIcon from '@mui/icons-material/Save';
 import CloseIcon from '@mui/icons-material/Close';
 import CheckIcon from '@mui/icons-material/Check';
+import SeleccionarBienPreparacion from "../componentes/SeleccionarBienPreparacion";
 
 
 export function PreparacionMezclaScreen(): JSX.Element {
@@ -54,7 +55,7 @@ export function PreparacionMezclaScreen(): JSX.Element {
         <Title title="Preparación Mezclas"></Title>
       </Grid>
       <SeleccionarMezcla/>
-
+      <SeleccionarBienPreparacion/>
       <Grid
         container
         direction="row"
@@ -90,6 +91,7 @@ export function PreparacionMezclaScreen(): JSX.Element {
         </Grid>
       </Grid>
     </Grid>
+    
   </>
     );
   }
