@@ -9,6 +9,12 @@ export interface IProduccion {
   current_stage_change: IObjChange;
   persons: Persona[];
   changing_person: Persona;
+  mezclas: IObjMezcla [];
+  current_mezcla:IObjMezcla;
+  bienes : IObjBienes [];
+  current_bien : IObjBienes;
+  preparaciones : IObjPreparacionMezcla [];
+  current_preparacion : IObjPreparacionMezcla;
 }
 
 export interface IObjChange {
@@ -71,4 +77,78 @@ export interface IObjNursery {
   id_persona_abre: number | null;
   id_persona_cierra: number | null;
   id_persona_cuarentena: number | null;
+}
+
+export interface IObjMezcla {
+  nombre: string | null;
+  item_activo: boolean | null;
+  item_ya_usado: boolean | null;
+  id_unidad_medida: number | null;
+  id_mezcla: number | null;
+   }
+export interface IObjPreparacionMezcla{
+  id_preparacion_mezcla: number | null;
+  consec_vivero_mezclas : number | null;
+  fecha_preparacion: string| Date | null;
+  fecha_registro: string| Date | null;
+  preparacion_anulada: boolean | null;
+  justificacion_anulacion: string | null;
+  fecha_anulacion: string | Date | null;
+  id_persona_prepara: number|null;
+  id_persona_anula: number| null;
+  id_mezcla: number | null;
+  id_item_preparacion_mezcla: number | null;
+  cantidad_usada: number | null;
+  nro_posicion: number | null;
+  id_vivero?: number | null;
+  cantidad_creada: number | null;
+  observaciones: string | null;
+  nombre_mezcla?: string | null;
+  nombre_persona_prepara?: string | null;
+}
+
+export interface IObjBienes{
+  id_bien: number|null;
+  unidad_medida: string | null;
+  saldo_disponible: number | null;
+  codigo_bien : string | null;
+  id_bien_usado: number | null;
+  nombre_bien: string | null;
+}
+
+export interface IObjViveristaActual {
+  id_vivero: number | null;
+  id_viverista_actual: number | null;
+  nombre: string | null;
+  tipo_documento: string | null;
+  numero_documento: number | null;
+  fecha_inicio_viverista_actual: string | Date | null;
+  observaciones: string | null;
+}
+
+export interface IObjHistoricoViveristas {
+  id_histo_responsable_vivero: number | null;
+  nombre_viverista: string | null;
+  nombre_persona_cambia: string | null;
+  tipo_documento: string | null;
+  numero_documento: number | null;
+  consec_asignacion: number | null;
+  fecha_inicio_periodo: string | Date | null;
+  fecha_fin_periodo: string | Date | null;
+  observaciones: string | null;
+  id_persona: number | null;
+  id_persona_cambia: number | null;
+}
+export interface IObjBuscarNuevoViverista { 
+  tipo_persona: string | null;
+  primer_nombre: string | null;
+  segundo_nombre: string | null;
+  primer_apellido: string |null;
+  segundo_apellido: string | null;
+  nombre_completo: string  | null;
+  razon_social: string | null;
+  nombre_comercial: string | null;
+  digito_verificacion: number | null;
+  cod_naturaleza_empresa: number | null;
+  tiene_usuario: boolean | null;
 }
