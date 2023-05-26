@@ -15,12 +15,6 @@ export interface IProduccion {
   current_bien : IObjBienes;
   preparaciones : IObjPreparacionMezcla [];
   current_preparacion : IObjPreparacionMezcla;
-  viveristas : IObjViveristaActual [];
-  current_viverista : IObjViveristaActual;
-  historicos_viveristas:IObjHistoricoViveristas[];
-  current_historico_viverista: IObjHistoricoViveristas;
-  nuevos_viveristas:IObjBuscarNuevoViverista[];
-  current_nuevo_viverista: IObjBuscarNuevoViverista;
 }
 
 export interface IObjChange {
@@ -120,41 +114,4 @@ export interface IObjBienes{
   codigo_bien : string | null;
   id_bien_usado: number | null;
   nombre_bien: string | null;
-}
-
-export interface IObjViveristaActual {
-  id_vivero: number | null;
-  id_viverista_actual: number | null;
-  nombre: string | null;
-  tipo_documento: string | null;
-  numero_documento: number | null;
-  fecha_inicio_viverista_actual: string | Date | null;
-  observaciones: string | null;
-}
-
-export interface IObjHistoricoViveristas {
-  id_histo_responsable_vivero: number | null;
-  nombre_viverista: string | null;
-  nombre_persona_cambia: string | null;
-  tipo_documento: string | null;
-  numero_documento: number | null;
-  consec_asignacion: number | null;
-  fecha_inicio_periodo: string | Date | null;
-  fecha_fin_periodo: string | Date | null;
-  observaciones: string | null;
-  id_persona: number | null;
-  id_persona_cambia: number | null;
-}
-export interface IObjBuscarNuevoViverista { 
-  tipo_persona: string | null;
-  primer_nombre: string | null;
-  segundo_nombre: string | null;
-  primer_apellido: string |null;
-  segundo_apellido: string | null;
-  nombre_completo: string  | null;
-  razon_social: string | null;
-  nombre_comercial: string | null;
-  digito_verificacion: number | null;
-  cod_naturaleza_empresa: number | null;
-  tiene_usuario: boolean | null;
 }

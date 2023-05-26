@@ -5,6 +5,12 @@ export interface INursery {
   current_bien: IObjItem;
   current_despacho: IDespacho;
   items_distribuidos: IObjDistribucion[];
+  viveristas : IObjViveristaActual [];
+  current_viverista : IObjViveristaActual;
+  historicos_viveristas:IObjHistoricoViveristas[];
+  current_historico_viverista: IObjHistoricoViveristas;
+  nuevos_viveristas:IObjBuscarNuevoViverista[];
+  current_nuevo_viverista: IObjBuscarNuevoViverista;
 }
 
 export interface IList {

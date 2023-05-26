@@ -7,12 +7,12 @@ import {
   type IObjMezcla,
   type IObjPreparacionMezcla,
   type IObjBienes,
-} from '../../interfaces/mezcla_preparacion';
+} from '../../interfaces/produccion';
 import { type Persona } from "../../../../../interfaces/globalModels";
 
 
 
-export const initial_state_change: IObjChange = {
+const initial_state_change: IObjChange = {
   id_cambio_de_etapa: null,
   id_bien: null,
   id_vivero: null,
@@ -27,7 +27,7 @@ export const initial_state_change: IObjChange = {
   id_persona_cambia: null,
   ruta_archivo_soporte: "",
 }
-export const initial_state_current_mezcla: IObjMezcla = {
+const initial_state_current_mezcla: IObjMezcla = {
   nombre: "",
   item_activo: true,
   item_ya_usado: false,
@@ -35,7 +35,7 @@ export const initial_state_current_mezcla: IObjMezcla = {
   id_mezcla: null,
 
 }
-export const initial_state_current_preparacion: IObjPreparacionMezcla = {
+const initial_state_current_preparacion: IObjPreparacionMezcla = {
   id_preparacion_mezcla: null,
   consec_vivero_mezclas : null,
   id_mezcla: null,
@@ -53,14 +53,15 @@ export const initial_state_current_preparacion: IObjPreparacionMezcla = {
   observaciones: ""
 }
 
-export const initial_state_current_bien: IObjBienes = {
+const initial_state_current_bien: IObjBienes = {
   id_bien: null,
   unidad_medida: "",
   saldo_disponible: null,
   codigo_bien :  null,
   id_bien_usado: null,
+  nombre_bien:null,
 }
-export const initial_statate_current_vegetal_material: IObjVegetalMaterial = {
+const initial_statate_current_vegetal_material: IObjVegetalMaterial = {
   id_inventario_vivero: null,
   id_bien: null,
   codigo_bien: "",

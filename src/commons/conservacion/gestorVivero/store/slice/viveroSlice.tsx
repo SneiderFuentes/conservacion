@@ -4,7 +4,10 @@ import {
     type INursery,
     type IObjItem,
     type IDespacho,
-    type IObjDistribucion
+    type IObjDistribucion,
+    type IObjViveristaActual,
+    type IObjHistoricoViveristas,
+    type IObjBuscarNuevoViverista
   } from '../../interfaces/vivero';
 
 const initial_state_current_nursery = {
@@ -65,6 +68,44 @@ const initial_state_current_bien: IObjItem = {
   es_semilla_vivero: null,
 }
 
+const initial_state_current_viverista_nuevo : IObjBuscarNuevoViverista ={
+  tipo_persona: "",
+  primer_nombre: "",
+  segundo_nombre: "",
+  primer_apellido: "",
+  segundo_apellido: "",
+  nombre_completo: "",
+  razon_social: "",
+  nombre_comercial:"", 
+  digito_verificacion:null, 
+  cod_naturaleza_empresa:null,
+  tiene_usuario: true,
+}
+
+const initial_state_current_historico_viverista : IObjHistoricoViveristas = {
+  id_histo_responsable_vivero: null,
+  nombre_viverista: "",
+  nombre_persona_cambia: "",
+  tipo_documento: "",
+  numero_documento: null,
+  consec_asignacion: null,
+  fecha_inicio_periodo: "",
+  fecha_fin_periodo: "",
+  observaciones: "",
+  id_persona: null,
+  id_persona_cambia: null,
+}
+
+const initial_state_current_viverista_actual: IObjViveristaActual = {
+  id_vivero: null,
+  id_viverista_actual: null,
+  nombre: "",
+  tipo_documento: "",
+  numero_documento: null,
+  fecha_inicio_viverista_actual: "",
+  observaciones: "",
+}
+
 const initial_state: INursery = {
   nurseries: [],
   current_nursery: initial_state_current_nursery,
@@ -72,6 +113,12 @@ const initial_state: INursery = {
   current_bien: initial_state_current_bien,
   current_despacho: initial_state_despacho,
   items_distribuidos: [],
+  viveristas : [],
+  current_viverista : initial_state_current_viverista_actual,
+  historicos_viveristas : [],
+  current_historico_viverista : initial_state_current_historico_viverista,
+  nuevos_viveristas: [],
+  current_nuevo_viverista : initial_state_current_viverista_nuevo,
 };
 
 export const nursery_slice = createSlice({
@@ -103,6 +150,24 @@ export const nursery_slice = createSlice({
     get_items_distribuidos: (state: INursery, action: PayloadAction<IObjDistribucion[]>) => {
       state.items_distribuidos = action.payload;
     },
+    get_viveristas: (state: INursery, action: PayloadAction<IObjViveristaActual []>)=> {
+      state.viveristas = action.payload;
+    },
+    get_current_viverista: (state: INursery, action: PayloadAction<IObjViveristaActual>)=> {
+      state.current_viverista = action.payload;
+    },
+    get_historicos_viveristas: (state: INursery, action: PayloadAction<IObjHistoricoViveristas []>)=> {
+      state.historicos_viveristas = action.payload;
+    },
+    get_current_historico_viverista: (state: INursery, action: PayloadAction<IObjHistoricoViveristas>)=> {
+      state.current_historico_viverista = action.payload;
+    },
+    get_nuevos_viveristas: (state: INursery, action: PayloadAction<IObjBuscarNuevoViverista[]>)=> {
+      state.nuevos_viveristas = action.payload;
+    },
+    get_current_nuevo_viverista: (state: INursery, action: PayloadAction<IObjBuscarNuevoViverista>)=> {
+      state.current_nuevo_viverista = action.payload;
+    },
   },
 });
-export const { set_current_bien, get_nurseries, current_nursery, get_nurseries_closing, get_nurseries_quarantine, get_items_despacho, get_items_distribuidos, set_current_despacho } = nursery_slice.actions;
+export const { get_viveristas, get_current_viverista, get_historicos_viveristas, get_current_historico_viverista, get_nuevos_viveristas,get_current_nuevo_viverista, set_current_bien, get_nurseries, current_nursery, get_nurseries_closing, get_nurseries_quarantine, get_items_despacho, get_items_distribuidos, set_current_despacho } = nursery_slice.actions;
