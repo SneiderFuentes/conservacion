@@ -212,10 +212,10 @@ const SeleccionarViverista = ({
               xs: 12,
               md: 6,
               control_form: control_viverista,
-              control_name: "fecha_ingreso",
+              control_name: "fecha_inicio_periodo",
               default_value: "",
               rules: {},
-              label: "Fecha de ingreso",
+              label: "Fecha de inicio",
               type: "text",
               disabled: true,
               helper_text: ""
@@ -224,30 +224,18 @@ const SeleccionarViverista = ({
               datum_type: "input_controller",
               xs: 12,
               md: 12,
-              control_form: control_despacho,
-              control_name: "observacion_distribucion",
+              control_form: control_viverista,
+              control_name: "observaciones",
               default_value: "",
               rules: {required_rule: { rule: true, message: "Observaciopn requerida" }},
-              label: "Observacion de distribucion",
+              label: "Observaciones",
               type: "text",
               multiline_text: true,
               rows_text: 4,
               disabled: false,
               helper_text: ""
             },
-            {
-              datum_type: "input_controller",
-              xs: 12,
-              md: 6,
-              control_form: control_despacho,
-              control_name: "persona_distribuye",
-              default_value: "",
-              rules: {},
-              label: "Distribución realizada por:",
-              type: "text",
-              disabled: true,
-              helper_text: ""
-            },
+          
           ]}
           modal_select_model_title='Buscar despacho'
           modal_form_filters={[
@@ -255,7 +243,7 @@ const SeleccionarViverista = ({
               datum_type: "input_controller",
               xs: 12,
               md: 2,
-              control_form: control_despacho,
+              control_form: control_viverista,
               control_name: "numero_despacho_consumo",
               default_value: "",
               rules: {},
