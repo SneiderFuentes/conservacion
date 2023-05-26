@@ -192,7 +192,20 @@ export const get_person_id_service = (
     }
   };
 };
-
+export const get_meclas_service = (): any => {
+  return async (dispatch: Dispatch<any>) => {
+    try {
+      const { data } = await api.get('conservacion/mezclas/get-list-mezclas/');
+      console.log(data);
+      dispatch(set_mezclas(data.data));
+      return data;
+    } catch (error: any) {
+      console.log('get_mezcla_service');
+      control_error(error.response.data.detail);
+      return error as AxiosError;
+    }
+  };
+};
 // crear cambio de etapa
 export const add_stage_change_service = (
   cambio: any,

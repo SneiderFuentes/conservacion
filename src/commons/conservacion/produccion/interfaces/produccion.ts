@@ -15,6 +15,12 @@ export interface IProduccion {
   current_bien : IObjBienes;
   preparaciones : IObjPreparacionMezcla [];
   current_preparacion : IObjPreparacionMezcla;
+  viveristas : IObjViveristaActual [];
+  current_viverista : IObjViveristaActual;
+  historicos_viveristas:IObjHistoricoViveristas[];
+  current_historico_viverista: IObjHistoricoViveristas;
+  nuevos_viveristas:IObjBuscarNuevoViverista[];
+  current_nuevo_viverista: IObjBuscarNuevoViverista;
 }
 
 export interface IObjChange {
