@@ -15,14 +15,11 @@ interface IProps {
   get_values: any
 }
 // eslint-disable-next-line @typescript-eslint/naming-convention, @typescript-eslint/explicit-function-return-type
-const SeleccionarViverista = ({
+const NuevoViverista = ({
   control_viverista,
   get_values
 }: IProps) => {
   const dispatch= useAppDispatch()
-
-  
-
 
   const [despachos, set_despachos] = useState<IDespacho[]>([]);
 
@@ -235,48 +232,7 @@ const SeleccionarViverista = ({
               disabled: false,
               helper_text: ""
             },
-            {
-              datum_type: "input_controller",
-              xs: 12,
-              md: 6,
-              control_form: control_viverista,
-              control_name: "tipo_persona",
-              default_value: "",
-              rules: {required_rule: { rule: true, message: "Debe seleccionar despacho" }},
-              label: "Tipo de documento",
-              type: "text",
-              disabled: false,
-              helper_text: "",
-              on_blur_function: search_viverista
-            },
-            {
-              datum_type: "input_controller",
-              xs: 12,
-              md: 6,
-              control_form: control_viverista,
-              control_name: "numero_documento",
-              default_value: "",
-              rules: {required_rule: { rule: true, message: "Debe seleccionar despacho" }},
-              label: "Número de identificación",
-              type: "text",
-              disabled: false,
-              helper_text: "",
-              on_blur_function: search_viverista
-            },
-            {
-              datum_type: "input_controller",
-              xs: 12,
-              md: 6,
-              control_form: control_viverista,
-              control_name: "nombre_completo",
-              default_value: "",
-              rules: {required_rule: { rule: true, message: "Debe seleccionar despacho" }},
-              label: "Nombre",
-              type: "text",
-              disabled: false,
-              helper_text: "",
-              on_blur_function: search_viverista
-            },
+          
           ]}
           modal_select_model_title='Buscar despacho'
           modal_form_filters={[
@@ -301,4 +257,4 @@ const SeleccionarViverista = ({
 }
 
 // eslint-disable-next-line no-restricted-syntax
-export default SeleccionarViverista;
+export default NuevoViverista;
