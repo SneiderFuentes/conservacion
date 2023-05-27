@@ -29,7 +29,7 @@ export function AsignarResponsableViveroScreen(): JSX.Element {
         <Title title="Responsable de Viveros"></Title>
       </Grid>
       <SeleccionarViverista/>
-        <Grid
+      <Grid
         container
         direction="row"
         padding={2}
