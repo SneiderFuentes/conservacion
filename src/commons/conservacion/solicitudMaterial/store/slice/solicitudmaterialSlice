@@ -246,10 +246,34 @@ export const produccion_slice = createSlice({
     set_persons: (state: ISolicitud, action: PayloadAction<Persona[]>) => {
       state.persons = action.payload;
     },
-
     set_changing_person: (state: ISolicitud, action: PayloadAction<Persona>) => {
       state.changing_person = action.payload;
     },
+    set_viveros: (state: ISolicitud, action: PayloadAction<IObjViveros[]>) => {
+        state.viveros = action.payload;
+      },
+     set_current_vivero: (state: ISolicitud, action: PayloadAction<IObjViveros>) => {
+        state.current_vivero = action.payload;
+      },
+    set_solicitudes: (state: ISolicitud, action: PayloadAction<IObjCreaSolicitud[]>) => {
+        state.solicitudes = action.payload;
+      },
+    set_current_solicitud: (state: ISolicitud, action: PayloadAction<IObjCreaSolicitud>) => {
+        state.current_solicitud = action.payload;
+      },
+    set_funcionarios: (state: ISolicitud, action: PayloadAction<IObjFuncionarioResponsable[]>) => {
+        state.funcionarios = action.payload;
+      },
+    set_current_funcionario: (state: ISolicitud, action: PayloadAction<IObjFuncionarioResponsable>) => {
+        state.current_funcionario = action.payload;
+      },
+    set_unidades: (state: ISolicitud, action: PayloadAction<IObjUnidadOrganizacional[]>) => {
+        state.unidades = action.payload;
+      },
+    set_current_unidad: (state: ISolicitud, action: PayloadAction<IObjUnidadOrganizacional>) => {
+        state.current_unidad = action.payload;
+      },
+      
  },
 });
 export const { set_changing_person, set_persons, set_current_nursery, set_nurseries, set_vegetal_materials, set_stage_changes, set_current_stage_change, set_current_vegetal_material} = solicitudmaterialSlice.actions;
