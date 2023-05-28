@@ -7,7 +7,7 @@ import {
 } from 'axios';
 // Slices
 import {
-  set_nurseries, set_vegetal_materials, set_stage_changes, set_changing_person, set_persons, set_mezclas, set_current_mezcla, set_bienes,set_current_bien,set_preparaciones,set_current_preparacion
+  set_nurseries, set_vegetal_materials, set_stage_changes, set_changing_person, set_persons,set_current_funcionario,set_current_solicitud,set_current_unidad,set_current_vivero,set_funcionarios,set_unidades,set_viveros,set_solicitudes
 } from '../slice/solicitudmaterialSlice';
 import { api } from '../../../../../api/axios';
 
