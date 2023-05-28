@@ -9,7 +9,14 @@ export interface ISolicitud {
   current_stage_change: IObjChange;
   persons: Persona[];
   changing_person: Persona;
-
+  viveros:IObjViveros [];
+  current_vivero:IObjViveros;
+  solicitudes: IObjCreaSolicitud[];
+  current_solicitud: IObjCreaSolicitud;
+  funcionarios: IObjFuncionarioResponsable[];
+  current_funcionario: IObjFuncionarioResponsable;
+  unidades: IObjUnidadOrganizacional[];
+  current_unidad: IObjUnidadOrganizacional;
 }
 
 export interface IObjChange {

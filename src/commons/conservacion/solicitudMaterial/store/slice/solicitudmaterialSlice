@@ -3,7 +3,11 @@ import {
   type IObjNursery,
   type IObjVegetalMaterial,
   type IObjChange,
-  type IProduccion,
+  type ISolicitud,
+  type IObjCreaSolicitud,
+  type IObjFuncionarioResponsable,
+  type IObjUnidadOrganizacional,
+  type IObjViveros,
 } from '../../interfaces/solicitud_material';
 import { type Persona } from "../../../../../interfaces/globalModels";
 
@@ -24,40 +28,7 @@ const initial_state_change: IObjChange = {
   id_persona_cambia: null,
   ruta_archivo_soporte: "",
 }
-const initial_state_current_mezcla: IObjMezcla = {
-  nombre: "",
-  item_activo: true,
-  item_ya_usado: false,
-  id_unidad_medida: null,
-  id_mezcla: null,
 
-}
-const initial_state_current_preparacion: IObjPreparacionMezcla = {
-  id_preparacion_mezcla: null,
-  consec_vivero_mezclas : null,
-  id_mezcla: null,
-  fecha_registro: (new Date().toString()),
-  preparacion_anulada: false,
-  justificacion_anulacion: "",
-  fecha_anulacion: (new Date().toString()),
-  id_persona_prepara: null,
-  fecha_preparacion: (new Date().toString()),
-  id_persona_anula:  null,
-  nro_posicion: null,
-  cantidad_usada: null,
-  cantidad_creada: null,
-  id_item_preparacion_mezcla: null,
-  observaciones: ""
-}
-
-const initial_state_current_bien: IObjBienes = {
-  id_bien: null,
-  unidad_medida: "",
-  saldo_disponible: null,
-  codigo_bien :  null,
-  id_bien_usado: null,
-  nombre_bien:null,
-}
 const initial_statate_current_vegetal_material: IObjVegetalMaterial = {
   id_inventario_vivero: null,
   id_bien: null,
@@ -116,8 +87,121 @@ const initial_state_person: Persona = {
   tiene_usuario: true,
 }
 
+const initial_state_current_vivero : IObjViveros = {
+    id_solicitud_vivero: null,
+    solicitud_abierta: true,
+    fecha_cierra_solicitud: null,
+    revisada_responsable: null,
+    estado_aprobacion_responsable:"",
+    justificacion_aprobacion_responsable: "",
+    fecha_aprobacion_responsable: null,
+    gestionada_viveros: true,
+    id_despacho_viveros: null,
+    observacion_cierre_no_dispo_viveros : "",
+    fecha_cierre_no_dispo: null,
+    revisada_coord_viveros: true,
+    estado_aprobacion_coord_viveros: "",
+    justificacion_aprobacion_coord_viveros: "",
+    fecha_aprobacion_coord_viv: "",
+    solicitud_anulada_solicitante:true,
+    justificacion_anulacion_solicitante: "",
+    fecha_anulacion_solicitante: null,
+    id_vivero_solicitud:null,
+    id_persona_solicita: null,
+    id_unidad_org_del_solicitante: null,
+    id_unidad_para_la_que_solicita: null,
+    id_funcionario_responsable_und_destino: null,
+    id_unidad_org_del_responsable: null,
+    id_persona_cierre_no_dispo_viveros: null,
+    id_persona_coord_viveros: null,
+}
 
-const initial_state: IProduccion = {
+const initial_state_current_solicitud: IObjCreaSolicitud = {
+    nro_solicitud : null,
+    fecha_solicitud : null,
+    id_vivero_solicitado : null,
+    nro_info_tecnico : null,
+    motivo: "",
+    observaciones: "",
+    id_unidad_para_la_que_solicita: null,
+    id_funcionario_responsable: null,
+    id_unidad_org_del_responsable: null,
+    cod_municipio_destino: null,
+    nombre_predio_destino: "",
+    direccion_destino: "",
+    fecha_retiro_material: null,
+    ruta_archivo_info_tecnico : "",
+    id_persona_solicita: null,
+    id_unidad_org_del_solicitante: null,
+}
+
+const initial_state_current_funcionario : IObjFuncionarioResponsable = {
+    id_persona: null,
+    // tipo_documento
+    cod_tipo_documento: "",
+    nombre: "",
+    precargado: true,
+    activo: true,
+    item_ya_usado: true,
+    // estado_civil": 
+    cod_estado_civil: "",
+    nombreestadocivil: "",
+    precargadoestadocivil: true,
+    activoestadocivil: true,
+    item_ya_usadoestadocivil: true,
+    representante_legal: "",
+    nombre_unidad_organizacional_actual: "",
+    tipo_persona: "",
+    numero_documento: null,
+    digito_verificacion: "",
+    primer_nombre: "",
+    segundo_nombre: "",
+    primer_apellido: "",
+    segundo_apellido: "",
+    nombre_comercial: "",
+    razon_social: "",
+    pais_residencia: "",
+    municipio_residencia: "",
+    direccion_residencia:"",
+    direccion_residencia_ref: "",
+    ubicacion_georeferenciada: "",
+    direccion_laboral: "",
+    direccion_notificaciones: "",
+    pais_nacimiento: "",
+    fecha_nacimiento: null,
+    sexo: "",
+    fecha_asignacion_unidad: null,
+    es_unidad_organizacional_actual: "",
+    email: "",
+    email_empresarial: "",
+    telefono_fijo_residencial: null,
+    telefono_celular: "",
+    telefono_empresa: "",
+    cod_municipio_laboral_nal: "",
+    cod_municipio_notificacion_nal: "",
+    telefono_celular_empresa: "",
+    telefono_empresa_2: "",
+    cod_pais_nacionalidad_empresa: null,
+    acepta_notificacion_sms:true,
+    acepta_notificacion_email:true,
+    acepta_tratamiento_datos:true,
+    id_cargo: null,
+    id_unidad_organizacional_actual: null,
+}
+
+const initial_state_current_unidad : IObjUnidadOrganizacional = {
+    id_unidad_organizacional: null,
+    nombre: "",
+    codigo: null,
+    cod_tipo_unidad: "",
+    cod_agrupacion_documental: "",
+    unidad_raiz: true,
+    id_organigrama: null,
+    id_nivel_organigrama: null,
+    id_unidad_org_padre: null,
+}
+
+const initial_state: ISolicitud = {
   nurseries: [],
   current_nursery: initial_state_current_nursery,
   vegetal_materials: [],
@@ -126,62 +210,46 @@ const initial_state: IProduccion = {
   current_stage_change: initial_state_change,
   persons: [],
   changing_person: initial_state_person,
-  mezclas: [],
-  current_mezcla: initial_state_current_mezcla,
-  bienes: [],
-  current_bien: initial_state_current_bien,
-  preparaciones: [],
-  current_preparacion: initial_state_current_preparacion
+  viveros : [],
+  current_vivero: initial_state_current_vivero,
+  solicitudes: [],
+  current_solicitud: initial_state_current_solicitud,
+  funcionarios: [],
+  current_funcionario: initial_state_current_funcionario,
+  unidades:[],
+  current_unidad: initial_state_current_unidad,
 }
 
 export const produccion_slice = createSlice({
   name: 'produccion',
   initialState: initial_state,
   reducers: {
-    set_nurseries: (state: IProduccion, action: PayloadAction<IObjNursery[]>) => {
+    set_nurseries: (state: ISolicitud, action: PayloadAction<IObjNursery[]>) => {
       state.nurseries = action.payload;
     },
-    set_current_nursery: (state: IProduccion, action: PayloadAction<IObjNursery>) => {
+    set_current_nursery: (state: ISolicitud, action: PayloadAction<IObjNursery>) => {
       state.current_nursery = action.payload;
     },
-    set_vegetal_materials: (state: IProduccion, action: PayloadAction<IObjVegetalMaterial[]>) => {
+    set_vegetal_materials: (state: ISolicitud, action: PayloadAction<IObjVegetalMaterial[]>) => {
       state.vegetal_materials = action.payload;
     },
-    set_current_vegetal_material: (state: IProduccion, action: PayloadAction<IObjVegetalMaterial>) => {
+    set_current_vegetal_material: (state: ISolicitud, action: PayloadAction<IObjVegetalMaterial>) => {
       state.current_vegetal_material = action.payload;
     },
 
-    set_stage_changes: (state: IProduccion, action: PayloadAction<IObjChange[]>) => {
+    set_stage_changes: (state: ISolicitud, action: PayloadAction<IObjChange[]>) => {
       state.stage_changes = action.payload;
     },
-    set_current_stage_change: (state: IProduccion, action: PayloadAction<IObjChange>) => {
+    set_current_stage_change: (state: ISolicitud, action: PayloadAction<IObjChange>) => {
       state.current_stage_change = action.payload;
     },
-    set_persons: (state: IProduccion, action: PayloadAction<Persona[]>) => {
+    set_persons: (state: ISolicitud, action: PayloadAction<Persona[]>) => {
       state.persons = action.payload;
     },
 
-    set_changing_person: (state: IProduccion, action: PayloadAction<Persona>) => {
+    set_changing_person: (state: ISolicitud, action: PayloadAction<Persona>) => {
       state.changing_person = action.payload;
     },
-    set_mezclas: (state: IProduccion,action:PayloadAction <IObjMezcla[]>)=> {
-      state.mezclas = action.payload;
-    },
-    set_current_mezcla: (state:IProduccion, action:PayloadAction <IObjMezcla> )=> {
-      state.current_mezcla = action.payload;
-    },
-    set_bienes: (state: IProduccion,action:PayloadAction <IObjBienes[]>)=> {
-      state.bienes = action.payload;
-    },
-    set_current_bien: (state: IProduccion,action:PayloadAction <IObjBienes>)=> {
-      state.current_bien = action.payload;
-    },
-    set_preparaciones: (state: IProduccion,action:PayloadAction <IObjPreparacionMezcla[]>)=> {
-      state.preparaciones = action.payload;
-    },  
-    set_current_preparacion: (state: IProduccion,action:PayloadAction <IObjPreparacionMezcla>)=> {
-      state.current_preparacion = action.payload;
-    },
-  },
+ },
 });
-export const { set_changing_person, set_persons, set_current_nursery, set_nurseries, set_vegetal_materials, set_stage_changes, set_current_stage_change, set_current_vegetal_material, set_mezclas, set_current_mezcla, set_bienes,set_current_bien,set_preparaciones,set_current_preparacion } = produccion_slice.actions;
+export const { set_changing_person, set_persons, set_current_nursery, set_nurseries, set_vegetal_materials, set_stage_changes, set_current_stage_change, set_current_vegetal_material} = solicitudmaterialSlice.actions;
