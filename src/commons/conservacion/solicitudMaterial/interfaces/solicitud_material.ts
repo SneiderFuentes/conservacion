@@ -92,3 +92,97 @@ ruta_archivo_info_tecnico : string | null;
 id_persona_solicita: number | null;
 id_unidad_org_del_solicitante: number | null;
 }
+
+export interface IObjViveros {
+id_solicitud_vivero: number | null;
+solicitud_abierta: boolean | null;
+fecha_cierra_solicitud: string | Date | null;
+revisada_responsable: boolean | null;
+estado_aprobacion_responsable: string | null;
+justificacion_aprobacion_responsable: string | null;
+fecha_aprobacion_responsable: string | Date | null;
+gestionada_viveros: boolean | null;
+id_despacho_viveros: number | null;
+observacion_cierre_no_dispo_viveros : string | null;
+fecha_cierre_no_dispo: string | Date | null;
+revisada_coord_viveros: boolean | null;
+estado_aprobacion_coord_viveros: string | null;
+justificacion_aprobacion_coord_viveros: string | null;
+fecha_aprobacion_coord_viv: string | Date | null;
+solicitud_anulada_solicitante:boolean | null;
+justificacion_anulacion_solicitante: string | null;
+fecha_anulacion_solicitante: string | Date | null;
+id_vivero_solicitud: number | null;
+id_persona_solicita: number | null;
+id_unidad_org_del_solicitante: number | null;
+id_unidad_para_la_que_solicita: number | null;
+id_funcionario_responsable_und_destino: number | null;
+id_unidad_org_del_responsable: number | null;
+id_persona_cierre_no_dispo_viveros: number | null;
+id_persona_coord_viveros: number | null;
+}
+
+export interface IObjUnidadOrganizacional {
+id_unidad_organizacional: number | null
+nombre: string | null;
+codigo: number | null;
+cod_tipo_unidad: string | null;
+cod_agrupacion_documental: string| null;
+unidad_raiz: boolean | null;
+id_organigrama: number | null;
+id_nivel_organigrama: number | null;
+id_unidad_org_padre: number | null;
+}
+export interface IObjFuncionarioResponsable {
+id_persona: number | null;
+// tipo_documento
+cod_tipo_documento: string | null;
+nombre: string | null;
+precargado: boolean | null;
+activo: boolean | null;
+item_ya_usado: boolean | null;
+// estado_civil": 
+cod_estado_civil: string | null;
+nombreestadocivil: string | null;
+precargadoestadocivil: boolean | null;
+activoestadocivil: boolean | null;
+item_ya_usadoestadocivil: boolean | null;
+representante_legal: string | null;
+nombre_unidad_organizacional_actual: string | null;
+tipo_persona: string | null;
+numero_documento: number | null;
+digito_verificacion: string | null;
+primer_nombre: string | null;
+segundo_nombre: string | null;
+primer_apellido: string | null;
+segundo_apellido: string | null;
+nombre_comercial: string | null;
+razon_social: string | null;
+pais_residencia: string | null;
+municipio_residencia: string | null;
+direccion_residencia: string | null;
+direccion_residencia_ref: string | null;
+ubicacion_georeferenciada: string | null;
+direccion_laboral: string | null;
+direccion_notificaciones: string | null;
+pais_nacimiento: string | null;
+fecha_nacimiento: string |Date | null;
+sexo: string | null;
+fecha_asignacion_unidad: string | Date | null;
+es_unidad_organizacional_actual: string | null;
+email: string | null;
+email_empresarial: string | null;
+telefono_fijo_residencial: number | null;
+telefono_celular: string | null;
+telefono_empresa: string | null;
+cod_municipio_laboral_nal: string | null;
+cod_municipio_notificacion_nal: string | null;
+telefono_celular_empresa: string | null;
+telefono_empresa_2: string | null;
+cod_pais_nacionalidad_empresa: number | null;
+acepta_notificacion_sms:boolean | null;
+acepta_notificacion_email:boolean | null;
+acepta_tratamiento_datos:boolean | null;
+id_cargo: number | null;
+id_unidad_organizacional_actual: number | null;
+}
