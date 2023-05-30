@@ -80,6 +80,8 @@ const initial_state_current_viverista_nuevo : IObjBuscarNuevoViverista ={
   digito_verificacion:null, 
   cod_naturaleza_empresa:null,
   tiene_usuario: true,
+  tipo_documento: "",
+  observacion_cambio:"",
 }
 
 const initial_state_current_historico_viverista : IObjHistoricoViveristas = {

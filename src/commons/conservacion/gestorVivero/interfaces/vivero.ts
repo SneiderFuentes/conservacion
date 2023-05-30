@@ -130,4 +130,6 @@ export interface IObjBuscarNuevoViverista {
   digito_verificacion: number | null;
   cod_naturaleza_empresa: number | null;
   tiene_usuario: boolean | null;
+  tipo_documento: string | null;
+  observacion_cambio: string| null;
 }

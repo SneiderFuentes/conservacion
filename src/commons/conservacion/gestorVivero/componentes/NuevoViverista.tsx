@@ -11,12 +11,12 @@ import { set_viveristas, set_current_viverista, set_historicos_viveristas, set_c
 import { type IDespacho } from "../interfaces/vivero";
 
 interface IProps {
-  control_viverista: any;
+  control_nuevo_viverista: any;
   get_values: any
 }
 // eslint-disable-next-line @typescript-eslint/naming-convention, @typescript-eslint/explicit-function-return-type
 const NuevoViverista = ({
-  control_viverista,
+  control_nuevo_viverista,
   get_values
 }: IProps) => {
   const dispatch= useAppDispatch()
@@ -122,9 +122,6 @@ const NuevoViverista = ({
     })
 
   
-
-  
-
   const get_viveristas: any = (async () => {
     try {
       const { data } = await api.get(
@@ -157,7 +154,7 @@ const NuevoViverista = ({
           set_current_model={set_current_viverista}
           row_id={"id_vivero"}
           columns_model={columns_viveristas}
-          models={set_viveristas}
+          models={[]}
           get_filters_models={get_viveristas}
           set_models={set_viveristas}
           button_submit_label='Buscar Vivero'
@@ -166,7 +163,7 @@ const NuevoViverista = ({
               datum_type: "input_controller",
               xs: 12,
               md: 6,
-              control_form: control_viverista,
+              control_form: control_nuevo_viverista,
               control_name: "tipo_documento",
               default_value: "",
               rules: {required_rule: { rule: true, message: "Debe seleccionar despacho" }},
@@ -180,7 +177,7 @@ const NuevoViverista = ({
               datum_type: "input_controller",
               xs: 12,
               md: 6,
-              control_form: control_viverista,
+              control_form: control_nuevo_viverista,
               control_name: "numero_documento",
               default_value: "",
               rules: {required_rule: { rule: true, message: "Debe seleccionar despacho" }},
@@ -194,8 +191,8 @@ const NuevoViverista = ({
               datum_type: "input_controller",
               xs: 12,
               md: 6,
-              control_form: control_viverista,
-              control_name: "nombre_viverista",
+              control_form: control_nuevo_viverista,
+              control_name: "nombre_completo",
               default_value: "",
               rules: {required_rule: { rule: true, message: "Debe seleccionar despacho" }},
               label: "Nombre",
@@ -204,28 +201,16 @@ const NuevoViverista = ({
               helper_text: "",
               on_blur_function: search_viverista
             },
-            {
-              datum_type: "input_controller",
-              xs: 12,
-              md: 6,
-              control_form: control_viverista,
-              control_name: "fecha_inicio_periodo",
-              default_value: "",
-              rules: {},
-              label: "Fecha de inicio",
-              type: "text",
-              disabled: true,
-              helper_text: ""
-            },
+
             {
               datum_type: "input_controller",
               xs: 12,
               md: 12,
-              control_form: control_viverista,
-              control_name: "observaciones",
+              control_form: control_nuevo_viverista,
+              control_name: "observacion_cambio",
               default_value: "",
               rules: {required_rule: { rule: true, message: "Observaciopn requerida" }},
-              label: "Observaciones",
+              label: "Observación del cambio",
               type: "text",
               multiline_text: true,
               rows_text: 4,
@@ -240,7 +225,7 @@ const NuevoViverista = ({
               datum_type: "input_controller",
               xs: 12,
               md: 2,
-              control_form: control_viverista,
+              control_form: control_nuevo_viverista,
               control_name: "numero_despacho_consumo",
               default_value: "",
               rules: {},

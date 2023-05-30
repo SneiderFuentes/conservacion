@@ -216,63 +216,7 @@ const SeleccionarViverista = ({
               disabled: true,
               helper_text: ""
             },
-            {
-              datum_type: "input_controller",
-              xs: 12,
-              md: 12,
-              control_form: control_viverista,
-              control_name: "observaciones",
-              default_value: "",
-              rules: {required_rule: { rule: true, message: "Observaciopn requerida" }},
-              label: "Observaciones",
-              type: "text",
-              multiline_text: true,
-              rows_text: 4,
-              disabled: false,
-              helper_text: ""
-            },
-            {
-              datum_type: "input_controller",
-              xs: 12,
-              md: 6,
-              control_form: control_viverista,
-              control_name: "tipo_persona",
-              default_value: "",
-              rules: {required_rule: { rule: true, message: "Debe seleccionar despacho" }},
-              label: "Tipo de documento",
-              type: "text",
-              disabled: false,
-              helper_text: "",
-              on_blur_function: search_viverista
-            },
-            {
-              datum_type: "input_controller",
-              xs: 12,
-              md: 6,
-              control_form: control_viverista,
-              control_name: "numero_documento",
-              default_value: "",
-              rules: {required_rule: { rule: true, message: "Debe seleccionar despacho" }},
-              label: "Número de identificación",
-              type: "text",
-              disabled: false,
-              helper_text: "",
-              on_blur_function: search_viverista
-            },
-            {
-              datum_type: "input_controller",
-              xs: 12,
-              md: 6,
-              control_form: control_viverista,
-              control_name: "nombre_completo",
-              default_value: "",
-              rules: {required_rule: { rule: true, message: "Debe seleccionar despacho" }},
-              label: "Nombre",
-              type: "text",
-              disabled: false,
-              helper_text: "",
-              on_blur_function: search_viverista
-            },
+
           ]}
           modal_select_model_title='Buscar despacho'
           modal_form_filters={[

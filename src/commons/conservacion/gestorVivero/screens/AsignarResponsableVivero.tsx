@@ -9,6 +9,7 @@ import CheckIcon from '@mui/icons-material/Check';
 import SeleccionarViverista from "../componentes/SeleccionarViverista";
 import { IObjViveristaActual } from "../interfaces/vivero";
 import { useForm } from "react-hook-form";
+import NuevoViverista from "../componentes/NuevoViverista";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function AsignarResponsableViveroScreen(): JSX.Element {
@@ -32,6 +33,9 @@ export function AsignarResponsableViveroScreen(): JSX.Element {
       </Grid>
       <SeleccionarViverista
       control_viverista={control_viverista}
+      get_values={get_values}/>
+      <NuevoViverista
+      control_nuevo_viverista={control_viverista}
       get_values={get_values}/>
       <Grid
         container
