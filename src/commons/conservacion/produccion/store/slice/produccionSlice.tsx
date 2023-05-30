@@ -7,6 +7,7 @@ import {
   type IObjMezcla,
   type IObjPreparacionMezcla,
   type IObjBienes,
+  IObjPreparacionBienes,
 } from '../../interfaces/produccion';
 import { type Persona } from "../../../../../interfaces/globalModels";
 
