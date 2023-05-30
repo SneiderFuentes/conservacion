@@ -192,7 +192,7 @@ export const get_person_id_service = (
     }
   };
 };
-export const get_meclas_service = (): any => {
+export const get_mezclas_service = (): any => {
   return async (dispatch: Dispatch<any>) => {
     try {
       const { data } = await api.get('conservacion/mezclas/get-list-mezclas/');
