@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-
 import { api } from '../../../../api/axios';
 import { type Persona } from "../../../../interfaces/globalModels";
 import { useForm } from 'react-hook-form';

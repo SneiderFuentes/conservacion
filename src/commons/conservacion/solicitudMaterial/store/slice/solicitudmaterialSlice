@@ -220,8 +220,8 @@ const initial_state: ISolicitud = {
   current_unidad: initial_state_current_unidad,
 }
 
-export const produccion_slice = createSlice({
-  name: 'produccion',
+export const solicitudmaterialSlice = createSlice({
+  name: 'solicitud',
   initialState: initial_state,
   reducers: {
     set_nurseries: (state: ISolicitud, action: PayloadAction<IObjNursery[]>) => {
