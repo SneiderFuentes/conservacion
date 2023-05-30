@@ -7,7 +7,9 @@ import {
     type IObjDistribucion,
     type IObjViveristaActual,
     type IObjHistoricoViveristas,
-    type IObjBuscarNuevoViverista
+    type IObjBuscarNuevoViverista,
+    type IObjGenerarBaja,
+    type IObjBienBaja
   } from '../../interfaces/vivero';
 
 const initial_state_current_nursery = {
@@ -108,6 +110,17 @@ const initial_state_current_viverista_actual: IObjViveristaActual = {
   observaciones: "",
 }
 
+const initial_state_current_bien_baja: IObjBienBaja ={
+  id_bien: null,
+  cantidad_baja: null,
+  Observaciones : "",
+}
+const initial_state_current_generar_baja: IObjGenerarBaja={
+  id_vivero: null,
+  fecha_baja: "",
+  motivo: "",
+}
+
 const initial_state: INursery = {
   nurseries: [],
   current_nursery: initial_state_current_nursery,
@@ -121,6 +134,10 @@ const initial_state: INursery = {
   current_historico_viverista : initial_state_current_historico_viverista,
   nuevos_viveristas: [],
   current_nuevo_viverista : initial_state_current_viverista_nuevo,
+  genera_bajas: [],
+  current_genera_baja: initial_state_current_generar_baja,
+  bienes_bajas: [],
+  current_bien_baja: initial_state_current_bien_baja,
 };
 
 export const nursery_slice = createSlice({
@@ -148,7 +165,6 @@ export const nursery_slice = createSlice({
     set_current_bien: (state: INursery, action: PayloadAction<IObjItem>) => {
       state.current_bien = action.payload;
     },
-    
     get_items_distribuidos: (state: INursery, action: PayloadAction<IObjDistribucion[]>) => {
       state.items_distribuidos = action.payload;
     },
@@ -170,6 +186,18 @@ export const nursery_slice = createSlice({
     set_current_nuevo_viverista: (state: INursery, action: PayloadAction<IObjBuscarNuevoViverista>)=> {
       state.current_nuevo_viverista = action.payload;
     },
+    set_genera_bajas: (state: INursery, action: PayloadAction<IObjGenerarBaja[]>)=> {
+      state.genera_bajas = action.payload;
+    },
+    set_current_genera_baja: (state: INursery, action: PayloadAction<IObjGenerarBaja>)=> {
+      state.current_genera_baja = action.payload;
+    },
+    set_bienes_bajas: (state: INursery, action: PayloadAction<IObjBienBaja[]>)=> {
+      state.bienes_bajas = action.payload;
+    },
+    set_current_bien_baja: (state: INursery, action: PayloadAction<IObjBienBaja>)=> {
+      state.current_bien = action.payload;
+    },
   },
 });
-export const { set_viveristas, set_current_viverista, set_historicos_viveristas, set_current_historico_viverista, set_nuevos_viveristas, set_current_nuevo_viverista, set_current_bien, get_nurseries, current_nursery, get_nurseries_closing, get_nurseries_quarantine, get_items_despacho, get_items_distribuidos, set_current_despacho } = nursery_slice.actions;
+export const { set_genera_bajas, set_current_genera_baja,set_bienes_bajas,set_current_bien_baja, set_viveristas, set_current_viverista, set_historicos_viveristas, set_current_historico_viverista, set_nuevos_viveristas, set_current_nuevo_viverista, set_current_bien, get_nurseries, current_nursery, get_nurseries_closing, get_nurseries_quarantine, get_items_despacho, get_items_distribuidos, set_current_despacho } = nursery_slice.actions;

@@ -1,4 +1,7 @@
 export interface INursery {
+  genera_bajas: IObjGenerarBaja[];
+  current_genera_baja: IObjGenerarBaja;
+  bienes_bajas: IObjBienBaja[];
   nurseries: IObjNursery[];
   current_nursery: IObjNursery;
   items_despacho: IObjItem[];
@@ -11,6 +14,7 @@ export interface INursery {
   current_historico_viverista: IObjHistoricoViveristas;
   nuevos_viveristas:IObjBuscarNuevoViverista[];
   current_nuevo_viverista: IObjBuscarNuevoViverista;
+  current_bien_baja: IObjBienBaja,
 }
 
 export interface IList {
@@ -132,4 +136,15 @@ export interface IObjBuscarNuevoViverista {
   tiene_usuario: boolean | null;
   tipo_documento: string | null;
   observacion_cambio: string| null;
+}
+
+export interface IObjGenerarBaja {
+  id_vivero?: number | null;
+  fecha_baja: string | Date | null;
+  motivo: string | null;
+}
+export interface IObjBienBaja {
+  id_bien: number |  null;
+  cantidad_baja: number | null;
+  Observaciones : string | null;
 }
