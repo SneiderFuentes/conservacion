@@ -134,7 +134,8 @@ const initial_state: IProduccion = {
   bienes: [],
   current_bien: initial_state_current_bien,
   preparaciones: [],
-  current_preparacion: initial_state_current_preparacion
+  current_preparacion: initial_state_current_preparacion,
+  preparacion_bienes: [],
 }
 
 export const produccion_slice = createSlice({
@@ -184,6 +185,9 @@ export const produccion_slice = createSlice({
     },  
     set_current_preparacion: (state: IProduccion,action:PayloadAction <IObjPreparacionMezcla>)=> {
       state.current_preparacion = action.payload;
+    },
+    set_preparacion_bienes: (state: IProduccion,action:PayloadAction <IObjPreparacionBienes[]>)=> {
+      state.preparacion_bienes = action.payload;
     },
   },
 });

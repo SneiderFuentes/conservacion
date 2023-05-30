@@ -61,8 +61,8 @@ const SeleccionarBienPreparacion = () => {
             ),
         },
         {
-            field: 'tipo_bien',
-            headerName: 'Tipo',
+            field: 'saldo_disponible',
+            headerName: 'Saldo disponible',
             width: 200,
             renderCell: (params) => (
                 <div style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
@@ -70,37 +70,6 @@ const SeleccionarBienPreparacion = () => {
                 </div>
             ),
         },
-        {
-            field: 'cantidad_entrante',
-            headerName: 'Cantidad entrante',
-            width: 150,
-            renderCell: (params) => (
-                <div style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
-                    {params.value}
-                </div>
-            ),
-        },
-        {
-            field: 'cantidad_disponible_bien',
-            headerName: 'Cantidad disponible',
-            width: 150,
-            renderCell: (params) => (
-                <div style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
-                    {params.value}
-                </div>
-            ),
-        },
-        {
-            field: 'unidad_disponible',
-            headerName: 'unidad',
-            width: 150,
-            renderCell: (params) => (
-                <div style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
-                    {params.value}
-                </div>
-            ),
-        },
-
     ];
 
     const columns_bienes_siembra: GridColDef[] = [

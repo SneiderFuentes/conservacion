@@ -15,7 +15,8 @@ export interface IProduccion {
   current_bien : IObjBienes;
   preparaciones : IObjPreparacionMezcla [];
   current_preparacion : IObjPreparacionMezcla;
-}
+  preparacion_bienes : IObjPreparacionBienes [];
+  }
 
 export interface IObjChange {
   id_cambio_de_etapa: number | null;
@@ -114,4 +115,11 @@ export interface IObjBienes{
   codigo_bien : string | null;
   id_bien_usado: number | null;
   nombre_bien: string | null;
+}
+
+export interface IObjPreparacionBienes {
+  id_bien_usado: number | null;
+  cantidad_usada: number | null;
+  observaciones: string | null;
+  nro_posicion: number | null;
 }

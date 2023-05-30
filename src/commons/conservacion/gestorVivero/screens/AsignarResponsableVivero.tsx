@@ -7,10 +7,12 @@ import SaveIcon from '@mui/icons-material/Save';
 import CloseIcon from '@mui/icons-material/Close';
 import CheckIcon from '@mui/icons-material/Check';
 import SeleccionarViverista from "../componentes/SeleccionarViverista";
+import { IObjViveristaActual } from "../interfaces/vivero";
+import { useForm } from "react-hook-form";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function AsignarResponsableViveroScreen(): JSX.Element {
-   
+  const { control: control_viverista, handleSubmit:handle_submit, reset: reset_viverista, getValues: get_values} = useForm<IObjViveristaActual>();  
 
     return (
       <>
@@ -26,9 +28,11 @@ export function AsignarResponsableViveroScreen(): JSX.Element {
       }}
     >
       <Grid item xs={12} marginY={2}>
-        <Title title="Responsable de Viveros"></Title>
+      <Title title="Responsable de Viveros"></Title>
       </Grid>
-      <SeleccionarViverista/>
+      <SeleccionarViverista
+      control_viverista={control_viverista}
+      get_values={get_values}/>
       <Grid
         container
         direction="row"

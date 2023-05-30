@@ -4,9 +4,7 @@ import { Chip, Grid } from '@mui/material';
 import { type ToastContent, toast } from 'react-toastify';
 import BuscarModelo from "../../../../components/partials/getModels/BuscarModelo";
 import { type GridColDef } from '@mui/x-data-grid';
-
 import {  useAppDispatch } from '../../../../hooks';
-
 import { set_viveristas, set_current_viverista, set_historicos_viveristas, set_current_historico_viverista, set_nuevos_viveristas, set_current_nuevo_viverista} from '../store/slice/viveroSlice';
 import { type IDespacho } from "../interfaces/vivero";
 
@@ -22,8 +20,6 @@ const SeleccionarViverista = ({
   const dispatch= useAppDispatch()
 
   
-
-
   const [despachos, set_despachos] = useState<IDespacho[]>([]);
 
   const columns_viveristas: GridColDef[] = [
@@ -160,7 +156,7 @@ const SeleccionarViverista = ({
           set_current_model={set_current_viverista}
           row_id={"id_vivero"}
           columns_model={columns_viveristas}
-          models={set_viveristas}
+          models={[]}
           get_filters_models={get_viveristas}
           set_models={set_viveristas}
           button_submit_label='Buscar Vivero'
