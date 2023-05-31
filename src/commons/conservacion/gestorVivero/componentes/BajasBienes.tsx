@@ -161,72 +161,52 @@ interface IProps {
             button_submit_label='Buscar despacho'
             form_inputs={[
               {
+                datum_type: "title",
+                title_label: "Seleccione bien"
+            },
+            {
                 datum_type: "input_controller",
                 xs: 12,
-                md: 6,
+                md: 3,
                 control_form: control_bienes_bajas,
-                control_name: "nro_baja",
+                control_name: "codigo_bien",
                 default_value: "",
-                rules: { required_rule: { rule: true, message: "Debe seleccionar baja" } },
-                label: "Numero baja",
+                rules: {required_rule: { rule: true, message: "Codigo bien requerido" }},
+                label: "Codigo bien",
                 type: "number",
-                disabled: false,
+                disabled: true,
                 helper_text: "",
-              },
-              {
+            },
+            {
                 datum_type: "input_controller",
                 xs: 12,
-                md: 6,
+                md: 3,
                 control_form: control_bienes_bajas,
-                control_name: "id_vivero",
+                control_name: "nombre_bien",
                 default_value: "",
-                rules: {},
-                label: "Vivero",
+                rules: {required_rule: { rule: true, message: "Debe seleccionar un bien" }},
+                label: "Nombre",
                 type: "text",
                 disabled: true,
                 helper_text: ""
-              },
-              {
+            },
+            {
                 datum_type: "input_controller",
                 xs: 12,
-                md: 6,
+                md: 3,
                 control_form: control_bienes_bajas,
-                control_name: "fecha_baja",
+                control_name: "cantidad_restante",
                 default_value: "",
-                rules: {},
-                label: "Fecha de Baja",
+                rules: {required_rule: { rule: true, message: "Debe seleccionar un bien" }},
+                label: "Cantidad restante",
                 type: "text",
                 disabled: true,
                 helper_text: ""
-              },
-              {
-                datum_type: "input_controller",
-                xs: 12,
-                md: 12,
-                control_form: control_bienes_bajas,
-                control_name: "motivo",
-                default_value: "",
-                rules: { required_rule: { rule: true, message: "Observaciopn requerida" } },
-                label: "Motivo",
-                type: "text",
-                multiline_text: true,
-                rows_text: 4,
-                disabled: false,
-                helper_text: ""
-              },
-              {
-                datum_type: "input_controller",
-                xs: 12,
-                md: 6,
-                control_form: control_bienes_bajas,
-                control_name: "persona_distribuye",
-                default_value: "",
-                rules: {},
-                label: "Distribución realizada por:",
-                type: "text",
-                disabled: true,
-                helper_text: ""
-              },
+            },
+        ]}
+        form_inputs_list={[
+
+            
             ]} modal_select_model_title={''} modal_form_filters={[]}                      />
         </Grid>
       </>
