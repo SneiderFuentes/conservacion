@@ -142,6 +142,7 @@ export interface IObjGenerarBaja {
   id_vivero?: number | null;
   fecha_baja: string | Date | null;
   motivo: string | null;
+  nro_baja: number  | null;
 }
 export interface IObjBienBaja {
   id_bien: number |  null;

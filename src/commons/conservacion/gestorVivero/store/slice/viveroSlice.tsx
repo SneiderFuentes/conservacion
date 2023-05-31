@@ -116,6 +116,7 @@ const initial_state_current_bien_baja: IObjBienBaja ={
   Observaciones : "",
 }
 const initial_state_current_generar_baja: IObjGenerarBaja={
+  nro_baja: null,
   id_vivero: null,
   fecha_baja: "",
   motivo: "",
