@@ -6,6 +6,7 @@ import BuscarModelo from "../../../../components/partials/getModels/BuscarModelo
 import { type GridColDef } from '@mui/x-data-grid';
 import {  useAppDispatch } from '../../../../hooks';
 import { set_genera_bajas, set_current_genera_baja,set_bienes_bajas,set_current_bien_baja, set_viveristas, set_current_viverista, set_historicos_viveristas, set_current_historico_viverista, set_nuevos_viveristas, set_current_nuevo_viverista} from '../store/slice/viveroSlice';
+import { IObjBienBaja } from '../interfaces/vivero';
 
 
 interface IProps {
@@ -22,7 +23,7 @@ interface IProps {
     
   
   
-    const [genera_bajas, set_current_genera_baja] = useState<IObjGenerarBaja[]>([]);
+    const [bienes_bajas, set_current_bien_baja] = useState< IObjBienBaja []>([]);
   
     const columns_bienes: GridColDef[] = [
       { field: 'id_despacho_entrante', headerName: 'ID', width: 20 },
@@ -151,7 +152,7 @@ interface IProps {
           borderRadius={2}
         >
           <BuscarModelo
-            set_current_model={set_current_genera_baja}
+            set_current_model={set_current_bien_baja}
             row_id={"id_vivero"}
             columns_model={columns_bienes}
             models={[]}
@@ -163,21 +164,20 @@ interface IProps {
                 datum_type: "input_controller",
                 xs: 12,
                 md: 6,
-                control_form: control_bajas,
+                control_form: control_bienes_bajas,
                 control_name: "nro_baja",
                 default_value: "",
-                rules: {required_rule: { rule: true, message: "Debe seleccionar baja" }},
+                rules: { required_rule: { rule: true, message: "Debe seleccionar baja" } },
                 label: "Numero baja",
                 type: "number",
                 disabled: false,
                 helper_text: "",
-                on_blur_function: 
               },
               {
                 datum_type: "input_controller",
                 xs: 12,
                 md: 6,
-                control_form: control_bajas,
+                control_form: control_bienes_bajas,
                 control_name: "id_vivero",
                 default_value: "",
                 rules: {},
@@ -190,7 +190,7 @@ interface IProps {
                 datum_type: "input_controller",
                 xs: 12,
                 md: 6,
-                control_form: control_bajas,
+                control_form: control_bienes_bajas,
                 control_name: "fecha_baja",
                 default_value: "",
                 rules: {},
@@ -203,10 +203,10 @@ interface IProps {
                 datum_type: "input_controller",
                 xs: 12,
                 md: 12,
-                control_form: control_bajas,
+                control_form: control_bienes_bajas,
                 control_name: "motivo",
                 default_value: "",
-                rules: {required_rule: { rule: true, message: "Observaciopn requerida" }},
+                rules: { required_rule: { rule: true, message: "Observaciopn requerida" } },
                 label: "Motivo",
                 type: "text",
                 multiline_text: true,
@@ -218,7 +218,7 @@ interface IProps {
                 datum_type: "input_controller",
                 xs: 12,
                 md: 6,
-                control_form: control_bajas,
+                control_form: control_bienes_bajas,
                 control_name: "persona_distribuye",
                 default_value: "",
                 rules: {},
@@ -227,8 +227,7 @@ interface IProps {
                 disabled: true,
                 helper_text: ""
               },
-            ]}
-                      />
+            ]} modal_select_model_title={''} modal_form_filters={[]}                      />
         </Grid>
       </>
     );

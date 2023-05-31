@@ -15,7 +15,7 @@ interface IProps {
   }
   // eslint-disable-next-line @typescript-eslint/naming-convention, @typescript-eslint/explicit-function-return-type
   const BajaHerramientasSemillas = ({
-    control_bajas,
+    control_genera_bajas,
     get_values
   }: IProps) => {
     const dispatch= useAppDispatch()
@@ -123,11 +123,7 @@ interface IProps {
         }
       })
   
-    
-  
-    
-  
-    const get_despachos: any = (async () => {
+        const get_despachos: any = (async () => {
       try {
         const { data } = await api.get(
           `conservacion/despachos/get-list/`
@@ -168,21 +164,20 @@ interface IProps {
                 datum_type: "input_controller",
                 xs: 12,
                 md: 6,
-                control_form: control_bajas,
+                control_form: control_genera_bajas,
                 control_name: "nro_baja",
                 default_value: "",
-                rules: {required_rule: { rule: true, message: "Debe seleccionar baja" }},
+                rules: { required_rule: { rule: true, message: "Debe seleccionar baja" } },
                 label: "Numero baja",
                 type: "number",
                 disabled: false,
                 helper_text: "",
-                on_blur_function: 
               },
               {
                 datum_type: "input_controller",
                 xs: 12,
                 md: 6,
-                control_form: control_bajas,
+                control_form: control_genera_bajas,
                 control_name: "id_vivero",
                 default_value: "",
                 rules: {},
@@ -195,7 +190,7 @@ interface IProps {
                 datum_type: "input_controller",
                 xs: 12,
                 md: 6,
-                control_form: control_bajas,
+                control_form: control_genera_bajas,
                 control_name: "fecha_baja",
                 default_value: "",
                 rules: {},
@@ -208,10 +203,10 @@ interface IProps {
                 datum_type: "input_controller",
                 xs: 12,
                 md: 12,
-                control_form: control_bajas,
+                control_form: control_genera_bajas,
                 control_name: "motivo",
                 default_value: "",
-                rules: {required_rule: { rule: true, message: "Observaciopn requerida" }},
+                rules: { required_rule: { rule: true, message: "Observaciopn requerida" } },
                 label: "Motivo",
                 type: "text",
                 multiline_text: true,
@@ -223,7 +218,7 @@ interface IProps {
                 datum_type: "input_controller",
                 xs: 12,
                 md: 6,
-                control_form: control_bajas,
+                control_form: control_genera_bajas,
                 control_name: "persona_distribuye",
                 default_value: "",
                 rules: {},
@@ -232,8 +227,7 @@ interface IProps {
                 disabled: true,
                 helper_text: ""
               },
-            ]}
-                      />
+            ]} modal_select_model_title={''} modal_form_filters={[]}                      />
         </Grid>
       </>
     );
