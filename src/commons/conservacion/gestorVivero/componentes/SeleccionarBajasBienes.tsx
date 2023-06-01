@@ -6,16 +6,16 @@ import BuscarModelo from "../../../../components/partials/getModels/BuscarModelo
 import { type GridColDef } from '@mui/x-data-grid';
 import {  useAppDispatch } from '../../../../hooks';
 import { set_genera_bajas, set_current_genera_baja,set_bienes_bajas,set_current_bien_baja, set_viveristas, set_current_viverista, set_historicos_viveristas, set_current_historico_viverista, set_nuevos_viveristas, set_current_nuevo_viverista} from '../store/slice/viveroSlice';
-import { IObjBienBaja, type IDespacho, IObjGenerarBaja } from "../interfaces/vivero";
+import { IObjBienBaja } from '../interfaces/vivero';
 
 
 interface IProps {
-    control_genera_bajas: any;
+    control_bienes_bajas: any;
     get_values: any
   }
   // eslint-disable-next-line @typescript-eslint/naming-convention, @typescript-eslint/explicit-function-return-type
-  const BajaHerramientasSemillas = ({
-    control_genera_bajas,
+  const BajasBienes = ({
+    control_bienes_bajas,
     get_values
   }: IProps) => {
     const dispatch= useAppDispatch()
@@ -23,7 +23,7 @@ interface IProps {
     
   
   
-    const [genera_bajas, set_current_genera_baja] = useState<IObjGenerarBaja[]>([]);
+    const [bienes_bajas, set_current_bien_baja] = useState< IObjBienBaja []>([]);
   
     const columns_bienes: GridColDef[] = [
       { field: 'id_despacho_entrante', headerName: 'ID', width: 20 },
@@ -129,16 +129,7 @@ interface IProps {
           `conservacion/despachos/get-list/`
         );
         console.log(data)
-        if ("data" in data) {
-          if (data.data.length > 0) {
-            set_despachos(data.data)
-            control_success("Se encontraron despachos")
-          } else {
-            control_error("No se encontraron despachos")
-            set_despachos([])
-          }
-        }
-      } catch (err) {
+        } catch (err) {
         console.log(err);
       }
     })
@@ -152,7 +143,7 @@ interface IProps {
           borderRadius={2}
         >
           <BuscarModelo
-            set_current_model={set_current_genera_baja}
+            set_current_model={set_current_bien_baja}
             row_id={"id_vivero"}
             columns_model={columns_bienes}
             models={[]}
@@ -161,72 +152,93 @@ interface IProps {
             button_submit_label='Buscar despacho'
             form_inputs={[
               {
+                datum_type: "title",
+                title_label: "Seleccione bien"
+            },
+            {
                 datum_type: "input_controller",
                 xs: 12,
-                md: 6,
-                control_form: control_genera_bajas,
-                control_name: "nro_baja",
+                md: 3,
+                control_form: control_bienes_bajas,
+                control_name: "codigo_bien",
                 default_value: "",
-                rules: { required_rule: { rule: true, message: "Debe seleccionar baja" } },
-                label: "Numero baja",
+                rules: {required_rule: { rule: true, message: "Codigo bien requerido" }},
+                label: "Codigo bien",
                 type: "number",
-                disabled: false,
+                disabled: true,
                 helper_text: "",
-              },
-              {
+            },
+            {
                 datum_type: "input_controller",
                 xs: 12,
-                md: 6,
-                control_form: control_genera_bajas,
-                control_name: "id_vivero",
+                md: 3,
+                control_form: control_bienes_bajas,
+                control_name: "nombre_bien",
                 default_value: "",
-                rules: {},
-                label: "Vivero",
+                rules: {required_rule: { rule: true, message: "Debe seleccionar un bien" }},
+                label: "Nombre",
                 type: "text",
                 disabled: true,
                 helper_text: ""
-              },
-              {
+            },
+            {
                 datum_type: "input_controller",
                 xs: 12,
-                md: 6,
-                control_form: control_genera_bajas,
-                control_name: "fecha_baja",
+                md: 3,
+                control_form: control_bienes_bajas,
+                control_name: "cantidad_restante",
                 default_value: "",
-                rules: {},
-                label: "Fecha de Baja",
+                rules: {required_rule: { rule: true, message: "Debe seleccionar un bien" }},
+                label: "Cantidad restante",
                 type: "text",
                 disabled: true,
                 helper_text: ""
-              },
-              {
-                datum_type: "input_controller",
-                xs: 12,
-                md: 12,
-                control_form: control_genera_bajas,
-                control_name: "motivo",
-                default_value: "",
-                rules: { required_rule: { rule: true, message: "Observaciopn requerida" } },
-                label: "Motivo",
-                type: "text",
-                multiline_text: true,
-                rows_text: 4,
-                disabled: false,
-                helper_text: ""
-              },
-              {
-                datum_type: "input_controller",
-                xs: 12,
-                md: 6,
-                control_form: control_genera_bajas,
-                control_name: "persona_distribuye",
-                default_value: "",
-                rules: {},
-                label: "Distribución realizada por:",
-                type: "text",
-                disabled: true,
-                helper_text: ""
-              },
+            },
+        ]}
+        form_inputs_list={[
+          {
+            datum_type: "input_controller",
+            xs: 12,
+            md: 3,
+            control_form: control_bienes_bajas,
+            control_name: "cantidad_usada",
+            default_value: "",
+            rules: { required_rule: { rule: true, message: "Debe seleccionar un bien" } },
+            label: "Cantidad Usada",
+            type: "text",
+            disabled: true,
+            helper_text: ""
+        },
+        {
+            datum_type: "input_controller",
+            xs: 12,
+            md: 3,
+            control_form: control_bienes_bajas,
+            control_name: "saldo_disponible",
+            default_value: "",
+            rules: { required_rule: { rule: true, message: "Debe seleccionar un bien" } },
+            label: "Disponible",
+            type: "text",
+            disabled: true,
+            helper_text: ""
+        },
+        {
+            datum_type: "input_controller",
+            xs: 12,
+            md: 12,
+            control_form: control_bienes_bajas,
+            control_name: "observaciones",
+            default_value: "",
+            rules: { required_rule: { rule: true, message: "Observación requerida" } },
+            label: "Observacion",
+            type: "text",
+            multiline_text: true,
+            rows_text: 4,
+            disabled: false,
+            helper_text: ""
+          },
+
+            
             ]} modal_select_model_title={''} modal_form_filters={[]}                      />
         </Grid>
       </>
@@ -234,4 +246,4 @@ interface IProps {
   }
   
   // eslint-disable-next-line no-restricted-syntax
-  export default BajaHerramientasSemillas;
+  export default BajasBienes;
