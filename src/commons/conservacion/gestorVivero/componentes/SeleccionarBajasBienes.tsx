@@ -211,32 +211,55 @@ interface IProps {
             },  
         ]}
         form_inputs_list={[
-
         {
             datum_type: "input_controller",
             xs: 12,
             md: 3,
             control_form: control_bienes_bajas,
-            control_name: "saldo_disponible",
+            control_name: "nombre_elemento",
             default_value: "",
-            rules: { required_rule: { rule: true, message: "Debe seleccionar un bien" } },
-            label: "Disponible",
+            rules: { },
+            label: "Nombre",
             type: "text",
             disabled: true,
             helper_text: ""
         },
         {
+          datum_type: "input_controller",
+          xs: 12,
+          md: 3,
+          control_form: control_bienes_bajas,
+          control_name: "tipo_elemento",
+          default_value: "",
+          rules: { required_rule: { rule: true, message: "Debe seleccionar un bien" } },
+          label: "Tipo Elemento",
+          type: "text",
+          disabled: true,
+          helper_text: ""
+      },
+      {
+        datum_type: "input_controller",
+        xs: 12,
+        md: 3,
+        control_form: control_bienes_bajas,
+        control_name: "cantidad_baja",
+        default_value: "",
+        rules: { required_rule: { rule: true, message: "Debe seleccionar un bien" } },
+        label: "Cantidad Baja",
+        type: "text",
+        disabled: true,
+        helper_text: ""
+    },
+        {
             datum_type: "input_controller",
             xs: 12,
             md: 12,
             control_form: control_bienes_bajas,
-            control_name: "observaciones",
+            control_name: "observacion",
             default_value: "",
             rules: { required_rule: { rule: true, message: "Observación requerida" } },
             label: "Observacion",
             type: "text",
-            multiline_text: true,
-            rows_text: 4,
             disabled: false,
             helper_text: ""
           },        

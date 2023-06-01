@@ -148,4 +148,6 @@ export interface IObjBienBaja {
   id_bien: number |  null;
   cantidad_baja: number | null;
   Observaciones : string | null;
+  nombre_elemento: string | null;
+  tipo_elemento: string| null;
 }

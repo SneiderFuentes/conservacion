@@ -114,6 +114,8 @@ const initial_state_current_bien_baja: IObjBienBaja ={
   id_bien: null,
   cantidad_baja: null,
   Observaciones : "",
+  nombre_elemento:"",
+  tipo_elemento: "",
 }
 const initial_state_current_generar_baja: IObjGenerarBaja={
   nro_baja: null,
