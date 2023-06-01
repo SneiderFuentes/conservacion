@@ -8,8 +8,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import CheckIcon from '@mui/icons-material/Check';
 import { IObjViveristaActual } from "../interfaces/vivero";
 import { useForm } from "react-hook-form";
-import BajasHerramientas from "../componentes/BajasHerramientas";
-import BajasBienes from "../componentes/BajasBienes";
+import BajasHerramientas from "../componentes/SeleccionarBajasHerramientas";
+import BajasBienes from "../componentes/SeleccionarBajasBienes";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function BajaHerramientaScreen(): JSX.Element {

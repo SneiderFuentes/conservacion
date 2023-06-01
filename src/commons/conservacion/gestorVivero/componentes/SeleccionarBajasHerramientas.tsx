@@ -109,7 +109,7 @@ interface IProps {
           console.log(data)
           if ("data" in data) {
             if(data.data.length > 0){
-            dispatch(set_current_genera_baja(data.data[0]))
+            dispatch({})
             control_success("Se selecciono el despacho ")
           } else{
             control_error(data.detail)
@@ -129,15 +129,7 @@ interface IProps {
           `conservacion/despachos/get-list/`
         );
         console.log(data)
-        if ("data" in data) {
-          if (data.data.length > 0) {
-            set_despachos(data.data)
-            control_success("Se encontraron despachos")
-          } else {
-            control_error("No se encontraron despachos")
-            set_despachos([])
-          }
-        }
+        
       } catch (err) {
         console.log(err);
       }

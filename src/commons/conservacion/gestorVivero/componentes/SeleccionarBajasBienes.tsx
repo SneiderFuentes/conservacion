@@ -186,29 +186,32 @@ interface IProps {
                 xs: 12,
                 md: 3,
                 control_form: control_bienes_bajas,
-                control_name: "cantidad_restante",
+                control_name: "cantidad_baja",
                 default_value: "",
                 rules: {required_rule: { rule: true, message: "Debe seleccionar un bien" }},
-                label: "Cantidad restante",
+                label: "Cantidad a dar de baja",
                 type: "text",
                 disabled: true,
                 helper_text: ""
             },
+            {
+              datum_type: "input_controller",
+              xs: 12,
+              md: 12,
+              control_form: control_bienes_bajas,
+              control_name: "observaciones",
+              default_value: "",
+              rules: { required_rule: { rule: true, message: "Observación requerida" } },
+              label: "Observacion",
+              type: "text",
+              multiline_text: true,
+              rows_text: 4,
+              disabled: false,
+              helper_text: ""
+            },  
         ]}
         form_inputs_list={[
-          {
-            datum_type: "input_controller",
-            xs: 12,
-            md: 3,
-            control_form: control_bienes_bajas,
-            control_name: "cantidad_usada",
-            default_value: "",
-            rules: { required_rule: { rule: true, message: "Debe seleccionar un bien" } },
-            label: "Cantidad Usada",
-            type: "text",
-            disabled: true,
-            helper_text: ""
-        },
+
         {
             datum_type: "input_controller",
             xs: 12,
@@ -236,9 +239,7 @@ interface IProps {
             rows_text: 4,
             disabled: false,
             helper_text: ""
-          },
-
-            
+          },        
             ]} modal_select_model_title={''} modal_form_filters={[]}                      />
         </Grid>
       </>
