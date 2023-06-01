@@ -9,7 +9,8 @@ import {
     type IObjHistoricoViveristas,
     type IObjBuscarNuevoViverista,
     type IObjGenerarBaja,
-    type IObjBienBaja
+    type IObjBienBaja,
+    type IObjBien
   } from '../../interfaces/vivero';
 
 const initial_state_current_nursery = {
@@ -111,17 +112,28 @@ const initial_state_current_viverista_actual: IObjViveristaActual = {
 }
 
 const initial_state_current_bien_baja: IObjBienBaja ={
-  id_bien: null,
+  id_item_baja_viveros: null,
   cantidad_baja: null,
-  Observaciones : "",
-  nombre_elemento:"",
-  tipo_elemento: "",
+  observaciones: null
 }
 const initial_state_current_generar_baja: IObjGenerarBaja={
-  nro_baja: null,
-  id_vivero: null,
-  fecha_baja: "",
-  motivo: "",
+  id_baja: null,
+  tipo_baja: null,
+  nro_baja_por_tipo:  null,
+  fecha_baja: null,
+  baja_anulado: null,
+  justificacion_anulacion: null,
+  fecha_anulacion: null,
+  id_persona_anula: null,
+}
+
+const initial_state_current_insumo: IObjBien={
+  id_bien: null,
+  codigo_bien: null,
+  nombre: null,
+  tipo_bien: null,
+  saldo_disponible: null,
+  unidad_medida: null,
 }
 
 const initial_state: INursery = {
@@ -141,6 +153,9 @@ const initial_state: INursery = {
   current_genera_baja: initial_state_current_generar_baja,
   bienes_bajas: [],
   current_bien_baja: initial_state_current_bien_baja,
+  insumos: [],
+  current_insumo: initial_state_current_insumo,
+
 };
 
 export const nursery_slice = createSlice({
@@ -199,8 +214,35 @@ export const nursery_slice = createSlice({
       state.bienes_bajas = action.payload;
     },
     set_current_bien_baja: (state: INursery, action: PayloadAction<IObjBienBaja>)=> {
-      state.current_bien = action.payload;
+      state.current_bien_baja = action.payload;
+    },
+    set_insumos: (state: INursery, action: PayloadAction<IObjBien[]>)=> {
+      state.insumos = action.payload;
+    },
+    set_current_insumo: (state: INursery, action: PayloadAction<IObjBien>)=> {
+      state.current_insumo = action.payload;
     },
   },
 });
-export const { set_genera_bajas, set_current_genera_baja,set_bienes_bajas,set_current_bien_baja, set_viveristas, set_current_viverista, set_historicos_viveristas, set_current_historico_viverista, set_nuevos_viveristas, set_current_nuevo_viverista, set_current_bien, get_nurseries, current_nursery, get_nurseries_closing, get_nurseries_quarantine, get_items_despacho, get_items_distribuidos, set_current_despacho } = nursery_slice.actions;
+export const { 
+  set_genera_bajas, 
+  set_current_genera_baja,
+  set_bienes_bajas,
+  set_current_bien_baja, 
+  set_viveristas, 
+  set_current_viverista, 
+  set_historicos_viveristas, 
+  set_current_historico_viverista, 
+  set_nuevos_viveristas, 
+  set_current_nuevo_viverista, 
+  set_current_bien, 
+  get_nurseries, 
+  current_nursery, 
+  get_nurseries_closing, 
+  get_nurseries_quarantine, 
+  get_items_despacho, 
+  get_items_distribuidos, 
+  set_current_despacho,
+  set_insumos,
+  set_current_insumo
+} = nursery_slice.actions;

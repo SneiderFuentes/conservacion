@@ -1,20 +1,23 @@
 export interface INursery {
-  genera_bajas: IObjGenerarBaja[];
-  current_genera_baja: IObjGenerarBaja;
-  bienes_bajas: IObjBienBaja[];
   nurseries: IObjNursery[];
   current_nursery: IObjNursery;
   items_despacho: IObjItem[];
   current_bien: IObjItem;
   current_despacho: IDespacho;
   items_distribuidos: IObjDistribucion[];
-  viveristas : IObjViveristaActual [];
-  current_viverista : IObjViveristaActual;
-  historicos_viveristas:IObjHistoricoViveristas[];
+  viveristas: IObjViveristaActual[];
+  current_viverista: IObjViveristaActual;
+  historicos_viveristas: IObjHistoricoViveristas[];
   current_historico_viverista: IObjHistoricoViveristas;
-  nuevos_viveristas:IObjBuscarNuevoViverista[];
+  nuevos_viveristas: IObjBuscarNuevoViverista[];
   current_nuevo_viverista: IObjBuscarNuevoViverista;
-  current_bien_baja: IObjBienBaja,
+  // bajas
+  genera_bajas: IObjGenerarBaja[];
+  current_genera_baja: IObjGenerarBaja;
+  insumos: IObjBien[];
+  current_insumo: IObjBien;
+  bienes_bajas: IObjBienBaja[];
+  current_bien_baja: IObjBienBaja;
 }
 
 export interface IList {
@@ -98,7 +101,6 @@ export interface IObjNursery {
   id_persona_cuarentena: number | null;
 }
 
-
 export interface IObjViveristaActual {
   id_vivero: number | null;
   id_viverista_actual: number | null;
@@ -122,32 +124,43 @@ export interface IObjHistoricoViveristas {
   id_persona: number | null;
   id_persona_cambia: number | null;
 }
-export interface IObjBuscarNuevoViverista { 
+export interface IObjBuscarNuevoViverista {
   tipo_persona: string | null;
   primer_nombre: string | null;
   segundo_nombre: string | null;
-  primer_apellido: string |null;
+  primer_apellido: string | null;
   segundo_apellido: string | null;
-  nombre_completo: string  | null;
+  nombre_completo: string | null;
   razon_social: string | null;
   nombre_comercial: string | null;
   digito_verificacion: number | null;
   cod_naturaleza_empresa: number | null;
   tiene_usuario: boolean | null;
   tipo_documento: string | null;
-  observacion_cambio: string| null;
+  observacion_cambio: string | null;
 }
 
 export interface IObjGenerarBaja {
-  id_vivero?: number | null;
-  fecha_baja: string | Date | null;
-  motivo: string | null;
-  nro_baja: number  | null;
+  id_baja: number | null;
+  tipo_baja: string | null;
+  nro_baja_por_tipo: number | null;
+  fecha_baja: string | null;
+  baja_anulado: boolean | null;
+  justificacion_anulacion: null;
+  fecha_anulacion: string | null;
+  id_persona_anula: number | null;
 }
 export interface IObjBienBaja {
-  id_bien: number |  null;
+  id_item_baja_viveros: number | null;
   cantidad_baja: number | null;
-  Observaciones : string | null;
-  nombre_elemento: string | null;
-  tipo_elemento: string| null;
+  observaciones: string | null;
+  nro_posicion?: number | null;
+}
+export interface IObjBien {
+  id_bien: number | null;
+  codigo_bien: string | null;
+  nombre: string | null;
+  tipo_bien: string | null;
+  saldo_disponible: number | null;
+  unidad_medida: string | null;
 }

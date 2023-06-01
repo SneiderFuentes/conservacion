@@ -74,66 +74,7 @@ interface IProps {
   
     ];
   
-    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-    const control_error = (message: ToastContent = 'Algo pasó, intente de nuevo') =>
-      toast.error(message, {
-        position: 'bottom-right',
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'light'
-      });
-  
-    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-    const control_success = (message: ToastContent) =>
-      toast.success(message, {
-        position: 'bottom-right',
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'light'
-      });
-  
-      const search_despacho: any = (async () => {
-        const numero: string = get_values("numero_despacho_consumo")??""
-        try {
-          const { data } = await api.get(
-            `conservacion/despachos/get-list/?numero_despacho=${numero??""}`
-          );
-          console.log(data)
-          if ("data" in data) {
-            if(data.data.length > 0){
-            dispatch({})
-            control_success("Se selecciono el despacho ")
-          } else{
-            control_error(data.detail)
-          }
     
-          } else {
-            control_error(data.detail)
-          }
-        } catch (err) {
-          console.log(err);
-        }
-      })
-  
-        const get_despachos: any = (async () => {
-      try {
-        const { data } = await api.get(
-          `conservacion/despachos/get-list/`
-        );
-        console.log(data)
-        
-      } catch (err) {
-        console.log(err);
-      }
-    })
   
     return (
       <>
@@ -145,12 +86,12 @@ interface IProps {
         >
           <BuscarModelo
             set_current_model={set_current_genera_baja}
-            row_id={"id_vivero"}
+            row_id={"id_baja"}
             columns_model={columns_bienes}
             models={[]}
             get_filters_models={[]}
             set_models={set_genera_bajas}
-            button_submit_label='Buscar despacho'
+            button_submit_label='Buscar baja'
             form_inputs={[
               {
                 datum_type: "input_controller",
