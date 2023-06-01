@@ -193,3 +193,67 @@ acepta_tratamiento_datos:boolean | null;
 id_cargo: number | null;
 id_unidad_organizacional_actual: number | null;
 }
+
+export interface IObjFuncionarioSolicitudes {
+  id_solicitud_vivero: number | null;
+  nro_solicitud: number | null;
+  fecha_solicitud: string | Date  | null;
+  id_persona_solicita: number | null,
+  primer_nombre_persona_solicita: string | null;
+  primer_apellido_persona_solicita: string | null;
+  id_unidad_para_la_que_solicita: number | null;
+  nombre_unidad_para_la_que_solicita: string | null;
+}
+
+export interface IObjSolicitudFuncionario {
+  id_item_solicitud_viveros: number | null;
+  id_solicitud_viveros: number | null;
+  nro_posicion: number | null;
+  id_bien: number | null;
+  cod_tipo_elemento_vivero: string | null;
+  codigo_bien: string | null;
+  nombre_bien: string | null;
+  cantidad: number | null;
+  observaciones: string | null;
+}
+
+export interface IObjGestionarSolicitudFuncionario {
+  estado_aprobacion_responsable: string | null;
+  justificacion_aprobacion_responsable: string | null;
+  fecha_aprobacion_responsable: string | Date  | null;
+  revisada_responsable: boolean | null;
+  solicitud_abierta: boolean | null;
+  fecha_cierra_solicitud: string | Date | null;
+}
+
+export interface IObjCoordinadorSolicitudes {
+  id_solicitud_vivero: number | null;
+  nro_solicitud: number | null;
+  fecha_solicitud: string | Date  | null;
+  id_persona_solicita: number | null,
+  primer_nombre_persona_solicita: string | null;
+  primer_apellido_persona_solicita: string | null;
+  id_unidad_para_la_que_solicita: number | null;
+  nombre_unidad_para_la_que_solicita: string | null;
+}
+
+export interface IObjSolicitudCoordinador {
+  id_item_solicitud_viveros: number | null;
+  id_solicitud_viveros: number | null;
+  nro_posicion: number | null;
+  id_bien: number | null;
+  cod_tipo_elemento_vivero: string | null;
+  codigo_bien: string | null;
+  nombre_bien: string | null;
+  cantidad: number | null;
+  observaciones: string | null;
+}
+
+export interface IObjGestionarSolicitudFCoordinador {
+  estado_aprobacion_responsable: string | null;
+  justificacion_aprobacion_responsable: string | null;
+  fecha_aprobacion_responsable: string | Date  | null;
+  revisada_responsable: boolean | null;
+  solicitud_abierta: boolean | null;
+  fecha_cierra_solicitud: string | Date | null;
+}
