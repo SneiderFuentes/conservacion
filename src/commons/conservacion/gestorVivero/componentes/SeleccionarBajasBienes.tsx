@@ -253,7 +253,7 @@ interface IProps {
         {
             datum_type: "input_controller",
             xs: 12,
-            md: 12,
+            md: 3,
             control_form: control_bienes_bajas,
             control_name: "observacion",
             default_value: "",
