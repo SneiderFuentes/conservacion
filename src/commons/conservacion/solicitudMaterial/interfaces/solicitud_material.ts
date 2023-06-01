@@ -225,7 +225,52 @@ export interface IObjGestionarSolicitudFuncionario {
   solicitud_abierta: boolean | null;
   fecha_cierra_solicitud: string | Date | null;
 }
+export interface IObjSolicitudDetalle {
+  id_solicitud_vivero:number | null;
+  nro_solicitud:number | null;
+  fecha_solicitud: string | Date  | null;
+  motivo: string | null;
+  observaciones: string | null;
+  con_municipio_destino: string | null;
+  direccion_destino: string | null;
+  nombre_predio_destino: string | null;
+  fecha_retiro_material: string | Date  | null;
+  nro_info_tecnico:number | null;
+  ruta_archivo_info_tecnico: string | null;
+  solicitud_abierta: boolean | null;
+  fecha_cierra_solicitud: string | Date  | null;
+  revisada_responsable: boolean | null;
+  estado_aprobacion_responsable: string | null;
+  justificacion_aprobacion_responsable: string | null;
+  fecha_aprobacion_responsable: string | Date  | null;
+  gestionada_viveros: boolean | null;
+  id_despacho_viveros:number | null;
+  observacion_cierre_no_dispo_viveros: string | null;
+  fecha_cierre_no_dispo: string | Date  | null;
+  revisada_coord_viveros: boolean | null;
+  estado_aprobacion_coord_viveros: string | null;
+  justificacion_aprobacion_coord_viveros: string | null;
+  fecha_aprobacion_coord_viv: string | Date  | null;
+  solicitud_anulada_solicitante: boolean | null;
+  justificacion_anulacion_solicitante: string | null;
+  fecha_anulacion_solicitante: string | Date  | null;
+  id_vivero_solicitud:number | null;
+  id_persona_solicita:number | null;
+  id_unidad_org_del_solicitante:number | null;
+  id_unidad_para_la_que_solicita:number | null;
+  id_funcionario_responsable_und_destino:number | null;
+  id_unidad_org_del_responsable:number | null;
+  id_persona_cierre_no_dispo_viveros:number | null;
+  id_persona_coord_viveros:number | null;
+}
 
+export interface IObjItemSolicitud {
+
+}
+
+export interface IObjEstadoAprobacion {
+  
+}
 export interface IObjCoordinadorSolicitudes {
   id_solicitud_vivero: number | null;
   nro_solicitud: number | null;
