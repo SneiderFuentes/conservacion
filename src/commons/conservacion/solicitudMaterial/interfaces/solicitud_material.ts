@@ -205,26 +205,7 @@ export interface IObjFuncionarioSolicitudes {
   nombre_unidad_para_la_que_solicita: string | null;
 }
 
-export interface IObjSolicitudFuncionario {
-  id_item_solicitud_viveros: number | null;
-  id_solicitud_viveros: number | null;
-  nro_posicion: number | null;
-  id_bien: number | null;
-  cod_tipo_elemento_vivero: string | null;
-  codigo_bien: string | null;
-  nombre_bien: string | null;
-  cantidad: number | null;
-  observaciones: string | null;
-}
 
-export interface IObjGestionarSolicitudFuncionario {
-  estado_aprobacion_responsable: string | null;
-  justificacion_aprobacion_responsable: string | null;
-  fecha_aprobacion_responsable: string | Date  | null;
-  revisada_responsable: boolean | null;
-  solicitud_abierta: boolean | null;
-  fecha_cierra_solicitud: string | Date | null;
-}
 export interface IObjSolicitudDetalle {
   id_solicitud_vivero:number | null;
   nro_solicitud:number | null;
@@ -265,11 +246,24 @@ export interface IObjSolicitudDetalle {
 }
 
 export interface IObjItemSolicitud {
-
+  id_item_solicitud_viveros: number | null;
+  id_solicitud_viveros: number | null;
+  nro_posicion: number | null;
+  id_bien: number | null;
+  cod_tipo_elemento_vivero: string | null;
+  codigo_bien: string | null;
+  nombre_bien: string | null;
+  cantidad: number | null;
+  observaciones: string | null;
 }
 
 export interface IObjEstadoAprobacion {
-  
+  estado_aprobacion_responsable: string | null;
+  justificacion_aprobacion_responsable: string | null;
+  fecha_aprobacion_responsable: string | Date  | null;
+  revisada_responsable: boolean | null;
+  solicitud_abierta: boolean | null;
+  fecha_cierra_solicitud: string | Date | null;
 }
 export interface IObjCoordinadorSolicitudes {
   id_solicitud_vivero: number | null;
