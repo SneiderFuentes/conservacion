@@ -422,7 +422,48 @@ export const solicitudmaterialSlice = createSlice({
     set_current_unidad: (state: ISolicitud, action: PayloadAction<IObjUnidadOrganizacional>) => {
         state.current_unidad = action.payload;
       },
-      
+    set_solicitudes_funcionarios: (state: ISolicitud, action: PayloadAction<IObjFuncionarioSolicitudes []>) => {
+        state.solicitudes_funcionarios = action.payload;
+      }, 
+    set_current_solicitud_funcionario: (state: ISolicitud, action: PayloadAction<IObjFuncionarioSolicitudes>) => {
+        state.current_solicitud_funcionario = action.payload;
+      },
+    set_solicitudes_detalle: (state: ISolicitud, action: PayloadAction<IObjSolicitudDetalle []>) => {
+        state.solicitudes_detalle = action.payload;
+      },
+    set_current_solicitud_detalle: (state: ISolicitud, action: PayloadAction<IObjSolicitudDetalle>) => {
+        state.current_solicitud_detalle = action.payload;
+      },
+    set_item_solicitud: (state: ISolicitud, action: PayloadAction<IObjItemSolicitud[]>) => {
+        state.item_solicitud = action.payload;
+      },
+    set_current_item_solicitud: (state: ISolicitud, action: PayloadAction<IObjItemSolicitud>) => {
+        state.current_item_solicitud= action.payload;
+      },
+    set_aprobaciones_funcionarios: (state: ISolicitud, action: PayloadAction<IObjEstadoAprobacion []>) => {
+        state.aprobaciones_funcionarios = action.payload;
+      },
+    set_current_aprobacion_funcionario: (state: ISolicitud, action: PayloadAction<IObjEstadoAprobacion>) => {
+        state.current_aprobacion_funcionario = action.payload;
+      },
+    set_solicitudes_detalle_coordinador: (state: ISolicitud, action: PayloadAction<IObjIdSolicitudDetalleCoor []>) => {
+        state.solicitudes_detalle_coordinador = action.payload;
+      },
+    set_current_solicitud_detalle_coordinador: (state: ISolicitud, action: PayloadAction<IObjIdSolicitudDetalleCoor>) => {
+        state.current_solicitud_detalle_coordinador = action.payload;
+      },
+    set_gestionar_solicitudes: (state: ISolicitud, action: PayloadAction<IObjGestionarSolicitudFCoordinador []>) => {
+        state.gestionar_solicitudes = action.payload;
+      },
+    set_current_gestion_solicitudes: (state: ISolicitud, action: PayloadAction<IObjGestionarSolicitudFCoordinador>) => {
+        state.current_gestion_solicitudes = action.payload;
+      },
+    set_aprobaciones_coordinadores: (state: ISolicitud, action: PayloadAction<IObjAprobacionCoordViveros []>) => {
+        state.aprobaciones_coordinadores = action.payload;
+      },
+    set_current_aprobacion_coordinador: (state: ISolicitud, action: PayloadAction<IObjAprobacionCoordViveros>) => {
+        state.current_aprobacion_coordinador = action.payload;
+      }, 
  },
 });
-export const { set_changing_person, set_persons, set_current_nursery, set_nurseries, set_vegetal_materials, set_stage_changes, set_current_stage_change, set_current_vegetal_material, set_current_funcionario,set_current_solicitud,set_current_unidad,set_current_vivero,set_funcionarios,set_unidades,set_viveros,set_solicitudes} = solicitudmaterialSlice.actions;
+export const { set_changing_person, set_persons, set_current_nursery, set_nurseries, set_vegetal_materials, set_stage_changes, set_current_stage_change, set_current_vegetal_material, set_current_funcionario,set_current_solicitud,set_current_unidad,set_current_vivero,set_funcionarios,set_unidades,set_viveros,set_solicitudes, set_aprobaciones_coordinadores,set_aprobaciones_funcionarios,set_current_aprobacion_coordinador,set_current_aprobacion_funcionario,set_current_gestion_solicitudes,set_current_item_solicitud,set_current_solicitud_detalle,set_current_solicitud_detalle_coordinador,set_current_solicitud_funcionario,set_gestionar_solicitudes,set_item_solicitud,set_solicitudes_detalle,set_solicitudes_detalle_coordinador,set_solicitudes_funcionarios} = solicitudmaterialSlice.actions;
