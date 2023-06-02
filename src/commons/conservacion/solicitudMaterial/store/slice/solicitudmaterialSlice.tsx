@@ -8,6 +8,13 @@ import {
   type IObjFuncionarioResponsable,
   type IObjUnidadOrganizacional,
   type IObjViveros,
+  type IObjAprobacionCoordViveros,
+  type IObjEstadoAprobacion,
+  type IObjFuncionarioSolicitudes,
+  type IObjGestionarSolicitudFCoordinador,
+  type IObjIdSolicitudDetalleCoor,
+  type IObjItemSolicitud,
+  type IObjSolicitudDetalle,
 } from '../../interfaces/solicitud_material';
 import { type Persona } from "../../../../../interfaces/globalModels";
 

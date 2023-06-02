@@ -17,6 +17,21 @@ export interface ISolicitud {
   current_funcionario: IObjFuncionarioResponsable;
   unidades: IObjUnidadOrganizacional[];
   current_unidad: IObjUnidadOrganizacional;
+// solicitudes funcionario
+  solicitudes_funcionarios: IObjFuncionarioSolicitudes [];
+  current_solicitud_funcionario: IObjFuncionarioSolicitudes;
+  solicitudes_detalle: IObjSolicitudDetalle [];
+  current_solicitud_detalle: IObjSolicitudDetalle;
+  item_solicitud: IObjItemSolicitud[];
+  current_item_solicitud: IObjItemSolicitud;
+  aprobaciones_funcionarios: IObjEstadoAprobacion [];
+  current_aprobacion_funcionario : IObjEstadoAprobacion;
+  solicitudes_detalle_coordinador: IObjIdSolicitudDetalleCoor [];
+  current_solicitud_detalle_coordinador: IObjIdSolicitudDetalleCoor;
+  gestionar_solicitudes: IObjGestionarSolicitudFCoordinador [];
+  current_gestion_solicitudes: IObjGestionarSolicitudFCoordinador;
+  aprobaciones_coordinadores: IObjAprobacionCoordViveros [];
+  current_aprobacion_coordinador: IObjAprobacionCoordViveros;
 }
 
 export interface IObjChange {
@@ -304,17 +319,6 @@ export interface IObjIdSolicitudDetalleCoor {
   id_persona_coord_viveros: number | null;
 }
 
-export interface IObjSolicitudCoordinador {
-  id_item_solicitud_viveros: number | null;
-  id_solicitud_viveros: number | null;
-  nro_posicion: number | null;
-  id_bien: number | null;
-  cod_tipo_elemento_vivero: string | null;
-  codigo_bien: string | null;
-  nombre_bien: string | null;
-  cantidad: number | null;
-  observaciones: string | null;
-}
 
 export interface IObjGestionarSolicitudFCoordinador {
   estado_aprobacion_responsable: string | null;
@@ -322,5 +326,14 @@ export interface IObjGestionarSolicitudFCoordinador {
   fecha_aprobacion_responsable: string | Date  | null;
   revisada_responsable: boolean | null;
   solicitud_abierta: boolean | null;
+  fecha_cierra_solicitud: string | Date | null;
+}
+
+export interface IObjAprobacionCoordViveros {
+  estado_aprobacion_coord_viveros: string | null;
+  justificacion_aprobacion_coord_viveros: string | null;
+  fecha_aprobacion_coord_viv: string | Date | null;
+  revisada_coord_viveros: string | null;
+  solicitud_abierta: string | null;
   fecha_cierra_solicitud: string | Date | null;
 }
