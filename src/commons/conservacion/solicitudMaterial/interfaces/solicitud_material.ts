@@ -32,6 +32,8 @@ export interface ISolicitud {
   current_gestion_solicitudes: IObjGestionarSolicitudFCoordinador;
   aprobaciones_coordinadores: IObjAprobacionCoordViveros [];
   current_aprobacion_coordinador: IObjAprobacionCoordViveros;
+  cierres_solicitudes: IObjCerrarSolicitud [];
+  current_cierre_solicitud : IObjCerrarSolicitud;
 }
 
 export interface IObjChange {
@@ -336,4 +338,12 @@ export interface IObjAprobacionCoordViveros {
   revisada_coord_viveros: string | null;
   solicitud_abierta: string | null;
   fecha_cierra_solicitud: string | Date | null;
+}
+export interface IObjCerrarSolicitud {
+  observacion_cierre_no_dispo_viveros: string | null;
+  fecha_cierre_no_dispo: string | Date  | null;
+  id_persona_cierre_no_dispo_viveros: number | null;
+  solicitud_abierta: string | null;
+  fecha_cierra_solicitud: string | Date | null;
+  gestionada_viveros: string | null;
 }

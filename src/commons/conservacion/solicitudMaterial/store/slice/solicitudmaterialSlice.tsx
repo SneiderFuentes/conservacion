@@ -15,6 +15,7 @@ import {
   type IObjIdSolicitudDetalleCoor,
   type IObjItemSolicitud,
   type IObjSolicitudDetalle,
+  IObjCerrarSolicitud,
 } from '../../interfaces/solicitud_material';
 import { type Persona } from "../../../../../interfaces/globalModels";
 
@@ -336,6 +337,15 @@ const initial_state_current_aprobacion_coordinador: IObjAprobacionCoordViveros =
   fecha_cierra_solicitud: "",
 }
 
+const initial_state_current_cierre_solicitud : IObjCerrarSolicitud={
+  observacion_cierre_no_dispo_viveros:"",
+  fecha_cierre_no_dispo: "",
+  id_persona_cierre_no_dispo_viveros: null,
+  solicitud_abierta:"",
+  fecha_cierra_solicitud: "",
+  gestionada_viveros: "", 
+}
+
 const initial_state: ISolicitud = {
   nurseries: [],
   current_nursery: initial_state_current_nursery,
@@ -367,6 +377,8 @@ const initial_state: ISolicitud = {
   current_gestion_solicitudes: initial_state_current_gestion_solicitudes,
   aprobaciones_coordinadores:[],
   current_aprobacion_coordinador: initial_state_current_aprobacion_coordinador,
+  cierres_solicitudes: [],
+  current_cierre_solicitud: initial_state_current_cierre_solicitud,
 }
 
 export const solicitudmaterialSlice = createSlice({
@@ -464,6 +476,12 @@ export const solicitudmaterialSlice = createSlice({
     set_current_aprobacion_coordinador: (state: ISolicitud, action: PayloadAction<IObjAprobacionCoordViveros>) => {
         state.current_aprobacion_coordinador = action.payload;
       }, 
+    set_cierres_solicitudes: (state: ISolicitud, action: PayloadAction<IObjCerrarSolicitud []>) => {
+        state.cierres_solicitudes = action.payload;
+      },
+    set_current_cierre_solicitud: (state: ISolicitud, action: PayloadAction<IObjCerrarSolicitud>) => {
+        state.current_cierre_solicitud = action.payload;
+      },
  },
 });
 export const { set_changing_person, set_persons, set_current_nursery, set_nurseries, set_vegetal_materials, set_stage_changes, set_current_stage_change, set_current_vegetal_material, set_current_funcionario,set_current_solicitud,set_current_unidad,set_current_vivero,set_funcionarios,set_unidades,set_viveros,set_solicitudes, set_aprobaciones_coordinadores,set_aprobaciones_funcionarios,set_current_aprobacion_coordinador,set_current_aprobacion_funcionario,set_current_gestion_solicitudes,set_current_item_solicitud,set_current_solicitud_detalle,set_current_solicitud_detalle_coordinador,set_current_solicitud_funcionario,set_gestionar_solicitudes,set_item_solicitud,set_solicitudes_detalle,set_solicitudes_detalle_coordinador,set_solicitudes_funcionarios} = solicitudmaterialSlice.actions;
