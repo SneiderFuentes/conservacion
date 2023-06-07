@@ -236,3 +236,12 @@ export interface IObjDatosMortalidad {
   id_baja: number | null;
   id_bien: number | null;
 }
+
+export interface IObjHistorialMortalidad {
+  id_item_baja_viveros: number | null;
+  consecutivo_mortalidad: number | null;
+  fecha_mortalidad: string |Date | null;
+  cantidad_mortalidad: number | null;
+  observaciones: string | null;
+  realizado_por: string | null;
+}
