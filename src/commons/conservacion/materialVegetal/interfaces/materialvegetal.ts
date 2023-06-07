@@ -23,7 +23,10 @@ export interface IMaterialVegetal {
   current_obtener_material_vegetal: IObjObtenerMaterialVegetal;
   obtener_mortalidad: IObjObtenerMortalidad[];
   current_obtener_mortalidad: IObjObtenerMortalidad;
-  
+  datos_mortalidad: IObjDatosMortalidad[];
+  current_datos_mortalidad: IObjDatosMortalidad;
+  historial_mortalidad: IObjHistorialMortalidad[];
+  current_historial_mortalidad: IObjHistorialMortalidad;
 }
 
 
