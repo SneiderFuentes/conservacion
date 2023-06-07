@@ -13,6 +13,17 @@ export interface IMaterialVegetal {
   current_planting: IObjPlanting;
   persons: Persona[];
   planting_person: Persona;
+  registros_mortalidad : IObjRegistrarMortalidad[];
+  current_registro_mortalidad:IObjRegistrarMortalidad;
+  actualizaciones_mortalidad: IObjActualizarMortalidad[];
+  current_actualizacion_mortalidad:IObjActualizarMortalidad;
+  filtros_viveros: IObjObtenerViveroFiltro[];
+  current_filtro_vivero:IObjObtenerViveroFiltro;
+  obtener_material_vegetal: IObjObtenerMaterialVegetal[];
+  current_obtener_material_vegetal: IObjObtenerMaterialVegetal;
+  obtener_mortalidad: IObjObtenerMortalidad[];
+  current_obtener_mortalidad: IObjObtenerMortalidad;
+  
 }
 
 
