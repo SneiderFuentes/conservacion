@@ -6,7 +6,8 @@ import {
   type IObjPlantingGoods,
   type IObjGoods,
   type IObjPlanting,
-  type IMaterialVegetal
+  type IMaterialVegetal,
+  IObjRegistrarMortalidad
 } from '../../interfaces/materialvegetal';
 import { type Persona } from "../../../../../interfaces/globalModels";
 
@@ -83,6 +84,34 @@ const initial_state_current_good: IObjGoods = {
   unidad_disponible: null,
 }
 
+const initial_state_current_registro_mortalidad : IObjRegistrarMortalidad ={
+
+}
+
+const initial_state_current_actualizacion_mortalidad : IObjActualizarMortalidad = {
+
+}
+
+const initial_state_current_filtro_vivero : IObjObtenerViveroFiltro = {
+
+}
+
+const initial_state_current_obtener_material_vegetal : IObjObtenerMaterialVegetal = {
+
+}
+
+const initial_state_current_obtener_mortalidad : IObjObtenerMortalidad = {
+
+}
+
+const initial_state_current_datos_mortalidad : IObjDatosMortalidad = {
+
+}
+
+const initial_state_current_historial_mortalidad : IObjHistorialMortalidad = {
+  
+}
+
 const initial_state: IMaterialVegetal = {
   nurseries: [],
   current_nursery: initial_state_current_nursery,
@@ -95,8 +124,23 @@ const initial_state: IMaterialVegetal = {
   plantings: [],
   current_planting: initial_state_planting,
   persons: [],
-  planting_person: initial_state_person
+  planting_person: initial_state_person,
+  registros_mortalidad : [],
+  current_registro_mortalidad:initial_state_current_registro_mortalidad,
+  actualizaciones_mortalidad:[],
+  current_actualizacion_mortalidad:initial_state_current_actualizacion_mortalidad,
+  filtros_viveros: [],
+  current_filtro_vivero:initial_state_current_filtro_vivero,
+  obtener_material_vegetal: [],
+  current_obtener_material_vegetal: initial_state_current_obtener_material_vegetal,
+  obtener_mortalidad: [],
+  current_obtener_mortalidad: initial_state_current_obtener_mortalidad,
+  datos_mortalidad: [],
+  current_datos_mortalidad: initial_state_current_datos_mortalidad,
+  historial_mortalidad: [],
+  current_historial_mortalidad: initial_state_current_historial_mortalidad,
 }
+
 
 
 export const material_vegetal_slice = createSlice({
