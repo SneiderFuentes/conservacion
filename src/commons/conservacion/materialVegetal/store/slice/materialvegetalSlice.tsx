@@ -290,6 +290,55 @@ export const material_vegetal_slice = createSlice({
     set_planting_person: (state: IMaterialVegetal, action: PayloadAction<Persona>) => {
       state.planting_person = action.payload;
     },
+    set_registros_mortalidad : (state: IMaterialVegetal, action: PayloadAction<IObjRegistrarMortalidad[]>) => {
+      state.registros_mortalidad  = action.payload;
+    },
+
+    set_current_registro_mortalidad: (state: IMaterialVegetal, action: PayloadAction<IObjRegistrarMortalidad>) => {
+      state.current_registro_mortalidad = action.payload;
+    },
+    set_actualizaciones_mortalidad: (state: IMaterialVegetal, action: PayloadAction<IObjActualizarMortalidad[]>) => {
+      state.actualizaciones_mortalidad = action.payload;
+    },
+
+    set_current_actualizacion_mortalidad: (state: IMaterialVegetal, action: PayloadAction<IObjActualizarMortalidad>) => {
+      state.current_actualizacion_mortalidad = action.payload;
+    },
+    set_filtros_viveros: (state: IMaterialVegetal, action: PayloadAction<IObjObtenerViveroFiltro[]>) => {
+      state.filtros_viveros = action.payload;
+    },
+
+    set_current_filtro_vivero: (state: IMaterialVegetal, action: PayloadAction<IObjObtenerViveroFiltro>) => {
+      state.current_filtro_vivero = action.payload;
+    },
+    set_obtener_material_vegetal: (state: IMaterialVegetal, action: PayloadAction<IObjObtenerMaterialVegetal[]>) => {
+      state.obtener_material_vegetal = action.payload;
+    },
+
+    set_current_obtener_material_vegetal: (state: IMaterialVegetal, action: PayloadAction<IObjObtenerMaterialVegetal>) => {
+      state.current_obtener_material_vegetal = action.payload;
+    },
+    set_obtener_mortalidad: (state: IMaterialVegetal, action: PayloadAction<IObjObtenerMortalidad[]>) => {
+      state.obtener_mortalidad = action.payload;
+    },
+
+    set_current_obtener_mortalidad: (state: IMaterialVegetal, action: PayloadAction<IObjObtenerMortalidad>) => {
+      state.current_obtener_mortalidad = action.payload;
+    },
+    set_datos_mortalidad: (state: IMaterialVegetal, action: PayloadAction<IObjDatosMortalidad[]>) => {
+      state.datos_mortalidad = action.payload;
+    },
+
+    set_current_datos_mortalidad: (state: IMaterialVegetal, action: PayloadAction<IObjDatosMortalidad>) => {
+      state.current_datos_mortalidad = action.payload;
+    },
+    set_historial_mortalidad: (state: IMaterialVegetal, action: PayloadAction<IObjHistorialMortalidad[]>) => {
+      state.historial_mortalidad = action.payload;
+    },
+
+    set_current_historial_mortalidad: (state: IMaterialVegetal, action: PayloadAction<IObjHistorialMortalidad>) => {
+      state.current_historial_mortalidad = action.payload;
+    },
   },
 });
-export const { set_persons, set_current_good, set_goods, set_planting_person, set_current_nursery, set_nurseries, set_vegetal_materials, set_germination_beds, set_current_germination_beds, set_planting_goods, set_plantings, set_current_planting } = material_vegetal_slice.actions;
+export const { set_actualizaciones_mortalidad, set_current_actualizacion_mortalidad, set_current_datos_mortalidad, set_current_filtro_vivero, set_current_historial_mortalidad,set_current_obtener_material_vegetal, set_current_obtener_mortalidad, set_current_registro_mortalidad, set_datos_mortalidad, set_filtros_viveros, set_historial_mortalidad, set_obtener_material_vegetal, set_obtener_mortalidad,set_registros_mortalidad,set_persons, set_current_good, set_goods, set_planting_person, set_current_nursery, set_nurseries, set_vegetal_materials, set_germination_beds, set_current_germination_beds, set_planting_goods, set_plantings, set_current_planting } = material_vegetal_slice.actions;
