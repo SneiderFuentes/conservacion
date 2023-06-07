@@ -7,7 +7,13 @@ import {
   type IObjGoods,
   type IObjPlanting,
   type IMaterialVegetal,
-  IObjRegistrarMortalidad
+  IObjRegistrarMortalidad,
+  IObjHistorialMortalidad,
+  IObjActualizarMortalidad,
+  IObjDatosMortalidad,
+  IObjObtenerMaterialVegetal,
+  IObjObtenerMortalidad,
+  IObjObtenerViveroFiltro
 } from '../../interfaces/materialvegetal';
 import { type Persona } from "../../../../../interfaces/globalModels";
 
@@ -85,31 +91,124 @@ const initial_state_current_good: IObjGoods = {
 }
 
 const initial_state_current_registro_mortalidad : IObjRegistrarMortalidad ={
-
+  id_vivero: null,
+  fecha_baja: "",
+  motivo: "",
+  id_item_baja_viveros: null,
+  id_bien: null,
+  agno_lote: null,
+  nro_lote: null,
+  cod_etapa_lote: "",
+  consec_cuaren_por_lote_etapa: "",
+  cantidad_baja: null,
+  observaciones: "",
+  nro_posicion: null,
 }
 
 const initial_state_current_actualizacion_mortalidad : IObjActualizarMortalidad = {
+  id_item_baja_viveros:null,
+  id_bien: null,
+  agno_lote: null,
+  nro_lote: null,
+  cod_etapa_lote: "",
+  consec_cuaren_por_lote_etapa: "",
+  cantidad_baja: null,
+  observaciones: "",
+  nro_posicion: null,
+  justificacion_anulacion: "",
 
 }
 
 const initial_state_current_filtro_vivero : IObjObtenerViveroFiltro = {
-
+  id_vivero: null,
+  nombre: "",
+  cod_municipio: "",
+  direccion: "",
+  area_mt2: null,
+  area_propagacion_mt2: null,
+  tiene_area_produccion: true,
+  tiene_areas_pep_sustrato: true,
+  tiene_area_embolsado: true,
+  cod_tipo_vivero: "",
+  fecha_inicio_viverista_actual: "",
+  cod_origen_recursos_vivero: "",
+  fecha_creacion: "",
+  en_funcionamiento: true,
+  fecha_ultima_apertura: "",
+  justificacion_apertura: "",
+  fecha_cierre_actual: "",
+  justificacion_cierre: "",
+  vivero_en_cuarentena: "",
+  fecha_inicio_cuarentena: "",
+  justificacion_cuarentena: "",
+  ruta_archivo_creacion: "",
+  activo: true,
+  item_ya_usado: true,
+  id_viverista_actual: null,
+  id_persona_crea: null,
+  id_persona_abre: null,
+  id_persona_cierra: null,
+  id_persona_cuarentena: null,
 }
 
 const initial_state_current_obtener_material_vegetal : IObjObtenerMaterialVegetal = {
-
+  id_inventario_vivero: null,
+  id_bien: null,
+  codigo_bien: "",
+  nombre_bien: "",
+  agno_lote: null,
+  nro_lote: null,
+  cod_etapa_lote: "",
+  desc_etapa_lote: "",
+  saldo_disponible: null,
+  unidad_medida: "",
+  registros_cuarentena: "",
 }
 
 const initial_state_current_obtener_mortalidad : IObjObtenerMortalidad = {
-
+  id_baja: null,
+  tipo_baja: "",
+  nro_baja_por_tipo: null,
+  fecha_baja: "",
+  fecha_registro: "",
+  motivo: "",
+  baja_anulado:true,
+  justificacion_anulacion: "",
+  fecha_anulacion: "",
+  ruta_archivo_soporte: "",
+  id_vivero: null,
+  nombre_vivero: "",
+  id_persona_baja:  null,
+  persona_baja: "",
+  id_persona_anula: null,
+  persona_anula: "",
+  items_mortalidad: "",
 }
 
 const initial_state_current_datos_mortalidad : IObjDatosMortalidad = {
-
+  id_item_baja_viveros: null,
+  codigo_bien: "",
+  nombre_bien: "",
+  unidad_medida: "",
+  desc_etapa_lote: "",
+  agno_lote: null,
+  nro_lote: null,
+  cod_etapa_lote: "",
+  consec_cuaren_por_lote_etapa: "",
+  cantidad_baja: null,
+  observaciones: "",
+  nro_posicion: null,
+  id_baja: null,
+  id_bien: null,
 }
 
 const initial_state_current_historial_mortalidad : IObjHistorialMortalidad = {
-  
+  id_item_baja_viveros: null,
+  consecutivo_mortalidad: null,
+  fecha_mortalidad: "",
+  cantidad_mortalidad: null,
+  observaciones: "",
+  realizado_por: "",
 }
 
 const initial_state: IMaterialVegetal = {
